@@ -66,6 +66,9 @@ public:
     // Rotates the camera about the W axis by a specified number of degrees.
     void rotateW(float degrees);
 
+    // Rotates the camera about the Y axis by a specified number of degrees.
+    void rotateY(float degrees);
+
     // Sets the near and far clip planes for this camera.
     void setClip(float nearPlane, float farPlane);
 
@@ -78,7 +81,7 @@ public:
 
 	glm::vec4 getU() const;
 	glm::vec4 getV() const; 
-	glm::vec4 getW() const;
+    glm::vec4 getW() const;
 
 
 
@@ -88,8 +91,12 @@ public:
 	glm::mat4 m_scaleMatrix, m_rotationMatrix;
 	float m_thetaH, m_thetaW;
 	glm::vec4 m_eye, m_up, m_look;
-	glm::vec4 m_u, m_v, m_w;
+    glm::vec4 m_u, m_v, m_w;
 
+    float m_moveSpeed;
+    float m_rotateSpeed;
+
+    virtual void keyPressed(int key) override;
 };
 
 #endif // CAMTRANSCAMERA_H

@@ -42,6 +42,7 @@ SOURCES += \
     RayShape/RayCone.cpp \
     RayShape/RayCylinder.cpp \
     RayShape/RaySphere.cpp \
+    scenegraph/TerrainScene.cpp \
     shapes/CubeShape.cpp \
     shapes/CylinderShape.cpp \
     shapes/ConeShape.cpp \
@@ -106,6 +107,7 @@ HEADERS += \
     RayShape/RayCone.h \
     RayShape/RayCylinder.h \
     RayShape/RaySphere.h \
+    scenegraph/TerrainScene.h \
     shapes/CubeShape.h \
     shapes/CylinderShape.h \
     shapes/ConeShape.h \
@@ -202,4 +204,6 @@ DISTFILES += \
     shaders/normals/normals.gsh \
     shaders/normals/normalsArrow.gsh \
     shaders/normals/normalsArrow.frag \
-    shaders/normals/normalsArrow.vert
+    shaders/normals/normalsArrow.vert \
+    shaders/toon.frag \
+    shaders/toon.vert

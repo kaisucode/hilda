@@ -8,13 +8,15 @@
 
 #include "glm/glm.hpp"
 
+#include "scenegraph/TerrainScene.h"
+
 class RGBA;
 class Camera;
 class OpenGLScene;
 class ShapesScene;
 class SceneviewScene;
 class OrbitingCamera;
-class CamtransCamera;
+#include "camera/CamtransCamera.h"
 class CS123XmlSceneParser;
 
 /**
@@ -55,6 +57,8 @@ public:
     // This function will be called by the UI when the settings have changed.
     virtual void settingsChanged();
 
+    void setTerrainScene();
+
 public slots:
     // These will be called by the corresponding UI buttons on the Camtrans dock
     void resetUpVector();
@@ -85,6 +89,7 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *event) override;
     virtual void wheelEvent(QWheelEvent *event) override;
     virtual void resizeEvent(QResizeEvent *event) override;
+    virtual void keyPressEvent(QKeyEvent *event) override;
 
     float m_oldPosX, m_oldPosY, m_oldPosZ;
     float m_oldRotU, m_oldRotV, m_oldRotN;
@@ -109,6 +114,7 @@ private:
     OpenGLScene *m_currentScene;
     std::unique_ptr<ShapesScene> m_shapesScene;
     std::unique_ptr<SceneviewScene> m_sceneviewScene;
+    std::unique_ptr<TerrainScene> m_terrainScene;
 };
 
 #endif // SUPPORTCANVAS3D_H

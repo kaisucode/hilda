@@ -1,13 +1,13 @@
 #include "OpenGLShape.h"
 #include "gl/datatype/VAO.h"
-#include "gl/datatype/VBO.h"
 #include "gl/datatype/VBOAttribMarker.h"
 #include "gl/shaders/ShaderAttribLocations.h"
 
 using namespace CS123::GL;
 
 OpenGLShape::OpenGLShape() :
-    m_VAO(nullptr)
+    m_VAO(nullptr),
+    m_triangleLayout(CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLES)
 {
 
 }
@@ -31,7 +31,7 @@ void OpenGLShape::initializeOpenGLShapeProperties() {
     std::vector<VBOAttribMarker> markers;
     markers.push_back(VBOAttribMarker(ShaderAttrib::POSITION, 3, 0));
     markers.push_back(VBOAttribMarker(ShaderAttrib::NORMAL, 3, 3*sizeof(float)));
-    VBO vbo = VBO(m_vertexData.data(), m_vertexData.size(), markers);
+    VBO vbo = VBO(m_vertexData.data(), m_vertexData.size(), markers, m_triangleLayout);
     m_VAO = std::make_unique<VAO>(vbo, numVertices);
 }
 

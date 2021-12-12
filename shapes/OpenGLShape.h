@@ -17,6 +17,8 @@
 #include <math.h>
 #include <iostream>
 
+#include "gl/datatype/VBO.h"
+
 /**
  *
  * inserts a glm::vec3 into a vector of floats
@@ -65,7 +67,9 @@ protected:
 
     std::vector<GLfloat> m_vertexData;
     std::unique_ptr<CS123::GL::VAO> m_VAO;
-    GLfloat m_radius = 0.5f;
+    GLfloat m_radius = 0.5f; 
+
+    CS123::GL::VBO::GEOMETRY_LAYOUT m_triangleLayout;
 };
 
 #endif // OPENGLSHAPE_H

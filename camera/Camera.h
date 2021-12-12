@@ -48,6 +48,8 @@ public:
 
     // Called when the scroll wheel changes position.
     virtual void mouseScrolled(int delta)   {}
+
+    virtual void keyPressed(int key) {}
 };
 
 #endif // CAMERA_H

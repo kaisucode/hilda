@@ -67,7 +67,6 @@ void SupportCanvas3D::initializeGL() {
     setSceneFromSettings();
 
     settingsChanged();
-
 }
 
 void SupportCanvas3D::initializeGlew() {
@@ -104,6 +103,8 @@ void SupportCanvas3D::initializeOpenGLSettings() {
 void SupportCanvas3D::initializeScenes() {
     m_sceneviewScene = std::make_unique<SceneviewScene>();
     m_shapesScene = std::make_unique<ShapesScene>(width(), height());
+    m_terrainScene = std::make_unique<TerrainScene>();
+    setFocus();
 }
 
 void SupportCanvas3D::paintGL() {
@@ -128,20 +129,13 @@ void SupportCanvas3D::settingsChanged() {
 }
 
 void SupportCanvas3D::setSceneFromSettings() {
-    switch(settings.getSceneMode()) {
-        case SCENEMODE_SHAPES:
-            setSceneToShapes();
-            break;
-        case SCENEMODE_SCENEVIEW:
-            setSceneToSceneview();
-            break;
-    }
+    setTerrainScene();
     m_settingsDirty = false;
 }
 
 void SupportCanvas3D::loadSceneviewSceneFromParser(CS123XmlSceneParser &parser) {
-    m_sceneviewScene = std::make_unique<SceneviewScene>();
-    Scene::parse(m_sceneviewScene.get(), &parser);
+    m_terrainScene = std::make_unique<TerrainScene>();
+    Scene::parse(m_terrainScene.get(), &parser);
     m_settingsDirty = true;
 }
 
@@ -153,6 +147,11 @@ void SupportCanvas3D::setSceneToSceneview() {
 void SupportCanvas3D::setSceneToShapes() {
     assert(m_shapesScene.get());
     m_currentScene = m_shapesScene.get();
+}
+
+void SupportCanvas3D::setTerrainScene() {
+    assert(m_terrainScene.get());
+    m_currentScene = m_terrainScene.get();
 }
 
 void SupportCanvas3D::copyPixels(int width, int height, RGBA *data) {
@@ -255,6 +254,7 @@ void SupportCanvas3D::mousePressEvent(QMouseEvent *event) {
         m_isDragging = true;
         update();
     }
+    setFocus();
 }
 
 void SupportCanvas3D::mouseMoveEvent(QMouseEvent *event) {
@@ -279,4 +279,9 @@ void SupportCanvas3D::wheelEvent(QWheelEvent *event) {
 
 void SupportCanvas3D::resizeEvent(QResizeEvent *event) {
     emit aspectRatioChanged();
+}
+
+void SupportCanvas3D::keyPressEvent(QKeyEvent *event) {
+    getCamera()->keyPressed(event->key());
+    update();
 }

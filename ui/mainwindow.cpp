@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
     SETUP_ACTION(shapesDock,    "CTRL+3");
     SETUP_ACTION(camtransDock,  "CTRL+4");
     SETUP_ACTION(rayDock,       "CTRL+5");
+    SETUP_ACTION(cartoonDock_2, "CTRL+6");
 
     ui->menuToolbars->addActions(actions);
 #undef SETUP_ACTION
@@ -61,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tabifyDockWidget(ui->brushDock, ui->shapesDock);
     tabifyDockWidget(ui->brushDock, ui->camtransDock);
     tabifyDockWidget(ui->brushDock, ui->rayDock);
+    tabifyDockWidget(ui->brushDock, ui->cartoonDock_2);
     ui->brushDock->raise();
 
     dataBind();
@@ -234,6 +236,8 @@ void MainWindow::dataBind() {
 
     BIND(ChoiceBinding::bindTabs(ui->tabWidget, settings.currentTab))
 
+    // Final dock
+    BIND(BoolBinding::bindCheckbox(ui->useToonShader, settings.useToonShader))
 #undef BIND
 
     // make sure the aspect ratio updates when m_canvas3D changes size
@@ -520,3 +524,4 @@ void MainWindow::updateCameraHeightAngle() {
 void MainWindow::setCameraAxonometric() {
     m_canvas3D->setCameraAxonometric();
 }
+

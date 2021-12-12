@@ -56,7 +56,8 @@ enum UITab {
 // Enumeration values for the currently selected scene type
 enum SceneMode {
     SCENEMODE_SHAPES,
-    SCENEMODE_SCENEVIEW
+    SCENEMODE_SCENEVIEW,
+    SCENEMODE_TERRAIN
 };
 
 // Enumeration values for the currently selected camera type
@@ -134,6 +135,9 @@ struct Settings {
     bool useDirectionalLights;  // Enable or disable directional lighting (extra credit).
     bool useSpotLights;         // Enable or disable spot lights (extra credit).
     bool useKDTree;
+
+    // Final
+    bool useToonShader;
 
     int getSceneMode();
     int getCameraMode();

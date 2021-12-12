@@ -83,8 +83,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>250</width>
-             <height>3058</height>
+             <width>355</width>
+             <height>3060</height>
             </rect>
            </property>
           </widget>
@@ -119,6 +119,9 @@
    </layout>
   </widget>
   <widget class="QDockWidget" name="brushDock">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="sizePolicy">
     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
      <horstretch>0</horstretch>
@@ -445,6 +448,9 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="shapesDock">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="windowTitle">
     <string>Shapes/Scene&amp;view</string>
    </property>
@@ -688,6 +694,9 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="filterDock">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="windowTitle">
     <string>F&amp;ilter</string>
    </property>
@@ -860,7 +869,7 @@
         <item>
          <widget class="QRadioButton" name="filterTypeScale">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="text">
            <string>Scale</string>
@@ -1104,6 +1113,9 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="rayDock">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="windowTitle">
     <string>&amp;Ray</string>
    </property>
@@ -1341,6 +1353,9 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="camtransDock">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="windowTitle">
     <string>&amp;Camtrans</string>
    </property>
@@ -1518,7 +1533,7 @@
      <item>
       <widget class="QGroupBox" name="cameraRotation">
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="title">
         <string>Rotation</string>
@@ -1920,7 +1935,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -1944,6 +1959,29 @@
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuToolbars"/>
+  </widget>
+  <widget class="QDockWidget" name="cartoonDock_2">
+   <property name="windowTitle">
+    <string>Cartoon World</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <widget class="QCheckBox" name="useToonShader">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>10</y>
+       <width>151</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Use toon shader</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <action name="actionNew">
    <property name="text">

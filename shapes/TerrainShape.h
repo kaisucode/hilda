@@ -22,7 +22,7 @@ private:
 	const float flatSection = 1;
 
 	const float m_numRows;
-	const float m_numCols;
+    const float m_numCols;
 	const bool m_isFilledIn;
 
 };

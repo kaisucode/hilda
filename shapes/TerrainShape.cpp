@@ -42,8 +42,16 @@ TerrainShape::TerrainShape(int param1, int param2) :
     initializeOpenGLShapeProperties();
 }
 
+int TerrainShape::getVertexDataSize() {
+    return m_vertexData.size();
+}
 
-
+glm::vec3 TerrainShape::getVertexAtIndex(int index) {
+   GLfloat x = m_vertexData.at(index);
+   GLfloat y = m_vertexData.at(index+1);
+   GLfloat z = m_vertexData.at(index+2);
+   return {x,y,z};
+}
 /**
  * Returns a pseudo-random value between -1.0 and 1.0 for the given row and
  * column.

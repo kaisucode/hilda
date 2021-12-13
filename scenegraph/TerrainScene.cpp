@@ -4,7 +4,9 @@
 #include "Camera.h"
 
 #include <sstream>
-
+#include <set>
+#include <random>
+#include <iostream>
 #include "Settings.h"
 #include "SupportCanvas3D.h"
 #include "ResourceLoader.h"
@@ -105,17 +107,90 @@ void TerrainScene::renderGeometry() {
         m_phongShader->applyMaterial(material);
     }
     m_currentShader->setUniform("m", glm::mat4(1));
-    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
-    tree->draw();
+//    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
+//    tree->draw();
     m_terrain->draw();
+    drawTrees();
+
 
 
     return;
 }
 
 void TerrainScene::drawTrees() {
+//    std::set<int> randIndices = this->generateRandIndices();
+    glm::vec3 baseTree = {0, -0.5, 0};
+    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
+ for (int vertexIndex:m_randIndices) {
+     glm::vec3 location = m_terrain->getVertexAtIndex(vertexIndex);
+     glm::vec3 translation = location - baseTree;
+     glm::mat4x4 translationMatrix = glm::translate(translation);
+     m_currentShader->setUniform("m", translationMatrix);
+     tree->draw();
 
+ }
+//    glm::vec3 location = m_terrain->getVertexAtIndex(0);
+//    glm::vec3 translation = location - baseTree;
+//    glm::mat4x4 translationMatrix = glm::translate(translation);
+//    m_currentShader->setUniform("m", translationMatrix);
+//    tree->draw();
 
+}
+
+/**
+ * @brief TerrainScene::generateRandIndices -> NOT USING THIS ANYWHERE; but this generates
+ * more random indices, but decided to generate pseudo random indices like the terrain
+ * @return
+ */
+std::set<int> TerrainScene::generateRandIndices() {
+    std::set<int> randIndices;
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    int numVertices = m_terrain->getVertexDataSize();
+    int maxIndex = numVertices / 6;
+    std::cout << "numVertices "<< numVertices << std::endl;
+    std::cout << "index: "<< maxIndex << std::endl;
+    while (randIndices.size() < m_numTrees) {
+         std::uniform_int_distribution<std::mt19937::result_type> distRand(1,maxIndex); // distribution in range [1, 6]
+         int index = distRand(rng);
+         randIndices.insert(index);
+         std::cout << index << std::endl;
+    //     if (index % 2 == 0) {// check if even because odd indices are normals
+    //         randIndices.insert(index);
+    //         std::cout << index << std::endl;
+    //     }
+     }
+     return randIndices;
+}
+
+std::set<int> TerrainScene::generatePseudoRandIndices() {
+    std::set<int> randIndices;
+    int numVertices = m_terrain->getVertexDataSize();
+    int maxIndex = numVertices / 6;
+    std::cout << "numVertices "<< numVertices << std::endl;
+    std::cout << "index: "<< maxIndex << std::endl;
+//    while (randIndices.size() < m_numTrees) {
+//         int index =
+//         randIndices.insert(index);
+//         std::cout << index << std::endl;
+//    //     if (index % 2 == 0) {// check if even because odd indices are normals
+//    //         randIndices.insert(index);
+//    //         std::cout << index << std::endl;
+//    //     }
+//     }
+//index: 179998 //make 100 trees the max or something
+    for (int i=0; i<m_numTrees; i++) {
+         int index = 179 * ((i-1 + 56)%3);
+         if(index < maxIndex) {
+             randIndices.insert(index);
+             std::cout << index << std::endl;
+         }
+    //     if (index % 2 == 0) {// check if even because odd indices are normals
+    //         randIndices.insert(index);
+    //         std::cout << index << std::endl;
+    //     }
+     }
+     return randIndices;
 }
 
 void TerrainScene::settingsChanged() {
@@ -132,10 +207,12 @@ void TerrainScene::settingsChanged() {
     m_terrain = std::make_unique<TerrainShape>(param1, param2);
 
 
+
     if (settings.useToonShader) {
         m_currentShader = m_toonShader.get();
     }
     else {
         m_currentShader = m_phongShader.get();
     }
+    m_randIndices = this->generatePseudoRandIndices();
 }

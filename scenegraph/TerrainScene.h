@@ -8,6 +8,9 @@
 #include "shapes/CylinderShape.h"
 #include "shapes/ConeShape.h"
 #include "shapes/SphereShape.h"
+#include <set>
+#include <random>
+#include <iostream>
 
 namespace CS123 { namespace GL {
 
@@ -35,6 +38,8 @@ private:
     void setPhongUniforms(SupportCanvas3D *context);
     void setToonUniforms(SupportCanvas3D *context);
     void drawTrees();
+    std::set<int> generateRandIndices();
+    std::set<int> generatePseudoRandIndices();
 
     std::unique_ptr<CS123::GL::CS123Shader> m_phongShader;
     std::unique_ptr<CS123::GL::CS123Shader> m_toonShader;
@@ -48,7 +53,8 @@ private:
     int m_LOD_count_threshold = 3;
 
     glm::vec3 m_backgroundColor;
-    int m_numTrees = 1;
+    int m_numTrees = 5;
+    std::set<int> m_randIndices;
 };
 
 #endif // TERRAINSCENE_H

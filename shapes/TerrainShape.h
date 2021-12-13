@@ -10,11 +10,14 @@ public:
     TerrainShape(int param1, int param2);
     ~TerrainShape();
 	bool isFilledIn();
+    int getVertexDataSize();
+    glm::vec3 getVertexAtIndex(int index);
 
 private: 
 	float randValue(int row, int col);
 	glm::vec3 getPosition(int row, int col);
 	glm::vec3 getNormal(int row, int col);
+
 
 	const float m_length = 100;
 	const float m_length_modifier = 3;

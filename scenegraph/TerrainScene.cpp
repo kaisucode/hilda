@@ -129,11 +129,6 @@ void TerrainScene::drawTrees() {
      tree->draw();
 
  }
-//    glm::vec3 location = m_terrain->getVertexAtIndex(0);
-//    glm::vec3 translation = location - baseTree;
-//    glm::mat4x4 translationMatrix = glm::translate(translation);
-//    m_currentShader->setUniform("m", translationMatrix);
-//    tree->draw();
 
 }
 
@@ -169,15 +164,6 @@ std::set<int> TerrainScene::generatePseudoRandIndices() {
     int maxIndex = numVertices / 6;
     std::cout << "numVertices "<< numVertices << std::endl;
     std::cout << "index: "<< maxIndex << std::endl;
-//    while (randIndices.size() < m_numTrees) {
-//         int index =
-//         randIndices.insert(index);
-//         std::cout << index << std::endl;
-//    //     if (index % 2 == 0) {// check if even because odd indices are normals
-//    //         randIndices.insert(index);
-//    //         std::cout << index << std::endl;
-//    //     }
-//     }
 //index: 179998 //make 100 trees the max or something
     for (int i=0; i<m_numTrees; i++) {
          int index = 179 * ((i-1 + 56)%3);
@@ -185,10 +171,6 @@ std::set<int> TerrainScene::generatePseudoRandIndices() {
              randIndices.insert(index);
              std::cout << index << std::endl;
          }
-    //     if (index % 2 == 0) {// check if even because odd indices are normals
-    //         randIndices.insert(index);
-    //         std::cout << index << std::endl;
-    //     }
      }
      return randIndices;
 }

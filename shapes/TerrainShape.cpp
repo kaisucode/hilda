@@ -1,11 +1,13 @@
 #include "shapes/TerrainShape.h"
+#include "shapes/TreeShape.h"
 
 TerrainShape::TerrainShape() :
 	m_numRows(m_length * m_length_modifier), 
 	m_numCols(m_length * m_length_modifier), 
     m_isFilledIn(true)
 {
-    m_triangleLayout = CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
+//    m_triangleLayout = CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
+     m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLES;
 }
 
 TerrainShape::TerrainShape(int param1, int param2) :
@@ -13,7 +15,8 @@ TerrainShape::TerrainShape(int param1, int param2) :
 	m_numCols(m_length * m_length_modifier), 
 	m_isFilledIn(true)
 {
-    m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
+//    m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
+    m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLES;
 	m_param1 = std::max(1, param1); // number of layers of triangles
 	m_param2 = std::max(3, param2); // number of sides
 
@@ -32,8 +35,11 @@ TerrainShape::TerrainShape(int param1, int param2) :
 		insertVec3(m_vertexData, getPosition(row + 1, m_numCols - 1));
 		insertVec3(m_vertexData, getNormal(row + 1, m_numCols - 1));
 	}
-
-	initializeOpenGLShapeProperties();
+//    std::make_unique<TreeShape>(settings.shapeParameter1, settings.shapeParameter2);
+//    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>(m_vertexData);
+//	int i = 1;
+//    std::cout<<"hi"<<std::endl;
+    initializeOpenGLShapeProperties();
 }
 
 

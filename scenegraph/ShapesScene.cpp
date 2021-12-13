@@ -218,11 +218,11 @@ void ShapesScene::settingsChanged() {
 			case SHAPE_CYLINDER: 
 				m_shape = std::make_unique<CylinderShape>(settings.shapeParameter1, settings.shapeParameter2);
 				break;
-			case SHAPE_SPECIAL_1: 
-				m_shape = std::make_unique<TerrainShape>(settings.shapeParameter1, settings.shapeParameter2);
-				break;
-				// case SHAPE_TORUS: 
-				//     break;
+            case SHAPE_SPECIAL_1:
+                m_shape = std::make_unique<TerrainShape>(settings.shapeParameter1, settings.shapeParameter2);
+                break;
+                // case SHAPE_TORUS:
+                //     break;
 			default: 
 				m_shape = std::make_unique<ExampleShape>(settings.shapeParameter1, settings.shapeParameter2);
 		}

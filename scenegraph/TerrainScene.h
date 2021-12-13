@@ -34,6 +34,7 @@ private:
 
     void setPhongUniforms(SupportCanvas3D *context);
     void setToonUniforms(SupportCanvas3D *context);
+    void drawTrees();
 
     std::unique_ptr<CS123::GL::CS123Shader> m_phongShader;
     std::unique_ptr<CS123::GL::CS123Shader> m_toonShader;
@@ -47,6 +48,7 @@ private:
     int m_LOD_count_threshold = 3;
 
     glm::vec3 m_backgroundColor;
+    int m_numTrees = 1;
 };
 
 #endif // TERRAINSCENE_H

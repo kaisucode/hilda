@@ -9,6 +9,7 @@
 #include "SupportCanvas3D.h"
 #include "ResourceLoader.h"
 #include "gl/shaders/CS123Shader.h"
+#include "shapes/TreeShape.cpp"
 
 using namespace CS123::GL;
 
@@ -103,11 +104,18 @@ void TerrainScene::renderGeometry() {
         material.shininess = 64;
         m_phongShader->applyMaterial(material);
     }
-
     m_currentShader->setUniform("m", glm::mat4(1));
+    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
+    tree->draw();
     m_terrain->draw();
 
+
     return;
+}
+
+void TerrainScene::drawTrees() {
+
+
 }
 
 void TerrainScene::settingsChanged() {
@@ -122,6 +130,7 @@ void TerrainScene::settingsChanged() {
     }
 
     m_terrain = std::make_unique<TerrainShape>(param1, param2);
+
 
     if (settings.useToonShader) {
         m_currentShader = m_toonShader.get();

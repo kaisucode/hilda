@@ -53,7 +53,7 @@ private:
     int m_LOD_count_threshold = 3;
 
     glm::vec3 m_backgroundColor;
-    int m_numTrees = 5;
+    int m_numTrees = 10;
     std::set<int> m_randIndices;
 };
 

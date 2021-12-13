@@ -166,7 +166,7 @@ std::set<int> TerrainScene::generatePseudoRandIndices() {
     std::cout << "index: "<< maxIndex << std::endl;
 //index: 179998 //make 100 trees the max or something
     for (int i=0; i<m_numTrees; i++) {
-         int index = 179 * ((i-1 + 56)%3);
+         int index = 179 * ((i-1 + 56)%101);
          if(index < maxIndex) {
              randIndices.insert(index);
              std::cout << index << std::endl;

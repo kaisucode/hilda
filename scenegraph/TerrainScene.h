@@ -35,15 +35,12 @@ private:
     void setMatrixUniforms(SupportCanvas3D *context);
     void renderGeometry();
 
-    void setPhongUniforms(SupportCanvas3D *context);
-    void setToonUniforms(SupportCanvas3D *context);
+    void setToonUniforms();
     void drawTrees();
     std::set<int> generateRandIndices();
     std::set<int> generatePseudoRandIndices();
 
-    std::unique_ptr<CS123::GL::CS123Shader> m_phongShader;
     std::unique_ptr<CS123::GL::CS123Shader> m_toonShader;
-    CS123::GL::CS123Shader *m_currentShader;
 
     std::unique_ptr<TerrainShape> m_terrain;
 

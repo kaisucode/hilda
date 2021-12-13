@@ -237,7 +237,9 @@ void MainWindow::dataBind() {
     BIND(ChoiceBinding::bindTabs(ui->tabWidget, settings.currentTab))
 
     // Final dock
-    BIND(BoolBinding::bindCheckbox(ui->useToonShader, settings.useToonShader))
+    BIND(FloatBinding::bindSliderAndTextbox(
+             ui->timeOfDaySlider, ui->timeOfDayTextbox, settings.timeOfDay, 6.f, 18.f))
+
 #undef BIND
 
     // make sure the aspect ratio updates when m_canvas3D changes size

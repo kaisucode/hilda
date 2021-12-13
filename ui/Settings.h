@@ -137,7 +137,7 @@ struct Settings {
     bool useKDTree;
 
     // Final
-    bool useToonShader;
+    float timeOfDay;
 
     int getSceneMode();
     int getCameraMode();

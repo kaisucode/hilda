@@ -6,8 +6,8 @@ TerrainShape::TerrainShape() :
 	m_numCols(m_length * m_length_modifier), 
     m_isFilledIn(true)
 {
-//    m_triangleLayout = CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
-     m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLES;
+    m_triangleLayout = CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
+//     m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLES;
 }
 
 TerrainShape::TerrainShape(int param1, int param2) :
@@ -15,8 +15,8 @@ TerrainShape::TerrainShape(int param1, int param2) :
 	m_numCols(m_length * m_length_modifier), 
 	m_isFilledIn(true)
 {
-//    m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
-    m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLES;
+    m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLE_STRIP;
+//    m_triangleLayout= CS123::GL::VBO::GEOMETRY_LAYOUT::LAYOUT_TRIANGLES;
 	m_param1 = std::max(1, param1); // number of layers of triangles
 	m_param2 = std::max(3, param2); // number of sides
 

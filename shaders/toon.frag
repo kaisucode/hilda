@@ -2,13 +2,13 @@
 
 in vec3 WS_position;
 in vec3 WS_normal;
+in vec3 baseColor;
 
 out vec3 fragColor;
 
-uniform vec3 lightDir;
+uniform vec4 lightDir;
 uniform vec4 WS_camPosition;
 uniform vec3 backgroundColor;
-uniform vec3 objectColor;
 uniform vec4 shadowTint;
 uniform vec4 highlightTint;
 uniform vec3 outlineColor;
@@ -19,14 +19,14 @@ void main() {
     float maxOutlineThick = 0.3;
     float minOutlineThick = 0.2;
 
-    vec3 WS_toLight = normalize(vec3(10.0) - WS_position);
-    float luminosity = 0.2 + 0.8 * max(0.0, dot(normalize(WS_normal), WS_toLight));
+    vec3 WS_toLight = normalize(lightDir.xyz);
+    float luminosity = 0.1 + 0.9 * max(0.0, dot(normalize(WS_normal), WS_toLight));
 
-    fragColor = objectColor;
+    fragColor = baseColor;
 
     if (dot(normalize(WS_camPosition.xyz - WS_position), WS_normal)
                    < mix(maxOutlineThick, minOutlineThick,
-                   max(0.0, dot(WS_normal, normalize(lightDir))))) {
+                   max(0.0, dot(WS_normal, WS_toLight)))) {
         fragColor = outlineColor;
     }
     else if (luminosity < 0.4) {

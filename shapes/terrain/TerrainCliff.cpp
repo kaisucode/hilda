@@ -46,15 +46,16 @@ float TerrainCliff::hash(glm::vec3 p)  // replace this by something better
 
 float TerrainCliff::noised(glm::vec3 x)
 {
-	glm::vec3 i = glm::floor(x / 20.0f);
-	glm::vec3 w = glm::fract(x / 20.0f);
+	float temp = 20.0f;
+
+	glm::vec3 i = glm::floor(x / temp);
+	glm::vec3 w = glm::fract(x / temp);
     
     // quintic interpolation
 	glm::vec3 u = w * w * w * (w * (w * 6.0f - 15.0f) + 10.0f);
 	// glm::vec3 u = w * w * (3.0f - 2.0f * w);
 	glm::vec3 du = 30.0f*w*w*(w*(w-2.0f)+1.0f);
     
-	float temp = 20.0f;
     float a = hash(i + glm::vec3(0.0,0.0,0.0));
     float b = hash(i + glm::vec3(temp,0.0,0.0));
     float c = hash(i + glm::vec3(0.0,temp,0.0));
@@ -108,8 +109,6 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
     position.z = 10 * col/m_numCols - 5;
 
     // TODO: Adjust position.y using value noise.
-	
-	// position.y = randValue(row, col);
 
 	int newRowFloor = glm::floor(row / 20.0f);
 	int newColFloor = glm::floor(col / 20.0f);
@@ -121,15 +120,6 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
 	float bYPosition = randValue(newRowFloor, newColCeiling);
 	float cYPosition = randValue(newRowCeiling, newColFloor);
 	float dYPosition = randValue(newRowCeiling, newColCeiling);
-
-	// float aYPosition = randValue(glm::floor(row / 20.0f), glm::floor(newCol);
-	// float bYPosition = randValue(newRow, newCol + 1);
-	// float cYPosition = randValue(newRow + 1, newCol);
-	// float dYPosition = randValue(newRow + 1, newCol + 1);
-
-
-	// u = (position.x - row * 20.0f) / 20.0f;
-	// v = (position.z - col * 20.0f) / 20.0f;
 
 	float u = glm::fract(col / 20.0f);
 	float v = glm::fract(row / 20.0f);

@@ -249,7 +249,7 @@ void MainWindow::dataBind() {
             ui->TerrainLake,
             ui->TerrainCliff))
     BIND(IntBinding::bindSliderAndTextbox(
-             ui->numTreesSlider, ui->numTreesTextbox, settings.numberOfTrees, 0, 100))
+             ui->numTreesSlider, ui->numTreesTextbox, settings.numberOfTrees, 0, settings.maxTreeNum))
     BIND(BoolBinding::bindCheckbox(ui->useOutlines, settings.useOutlines))
     BIND(FloatBinding::bindSliderAndTextbox(ui->outlineWeightSlider, ui->outlineWeightTextbox, settings.outlineWeight, 0, 0.5))
 

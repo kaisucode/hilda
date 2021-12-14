@@ -22,17 +22,17 @@ using namespace CS123::GL;
 TerrainScene::TerrainScene() :
     m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
     terrainType(TERRAIN_LAB),
-//     m_terrain(std::make_unique<TerrainCliff>(settings.shapeParameter1, settings.shapeParameter2)),
-//     terrainType(TERRAIN_CLIFF),
-    // m_terrain(std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2)),
     m_sceneLight(),
     m_backgroundColor(0.8f, 0.93f, 0.96f),
-    m_numTrees(0)
+    m_numTrees(settings.numberOfTrees),
+    m_randIndices()
 {
 
     settings.terrainType = this->terrainType;
 
     loadShaders();
+    m_randIndices.reserve(settings.maxTreeNum);
+    generatePseudoRandIndices();
     settingsChanged();
 }
 
@@ -83,9 +83,6 @@ void TerrainScene::setLight() {
 void TerrainScene::setCameraUniforms(SupportCanvas3D *context) {
 	CamtransCamera *camera = context->getCamtransCamera();
 	m_toonShader->setUniform("WS_camPosition", camera->getPosition());
-    // m_toonShader->setUniform("p", camera->getProjectionMatrix());
-    // m_toonShader->setUniform("v", camera->getViewMatrix());
-
     m_toonShader->setUniform("p", context->getCamera()->getProjectionMatrix());
     m_toonShader->setUniform("v", context->getCamera()->getViewMatrix());
 }
@@ -96,87 +93,62 @@ void TerrainScene::setToonUniforms() {
     m_toonShader->setUniform("highlightTint", glm::vec4(0.992, 0.878, 0.666, 0.2));
     m_toonShader->setUniform("useOutlines", settings.useOutlines);
     m_toonShader->setUniform("outlineColor", glm::vec3(0.2));
-    m_toonShader->setUniform("outlineThickness", settings.outlineWeight);
+    m_toonShader->setUniform("outlineWeight", settings.outlineWeight);
 }
 
 void TerrainScene::renderGeometry() {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    m_toonShader->setUniform("m", glm::mat4(1.0f));
-//    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
-//    tree->draw();
-//    m_toonShader->setUniform("objectColor", glm::vec3(0.3, 0.6, 0.4));
-    m_toonShader->setUniform("terrain", true);
-    m_terrain->draw();
+
+    drawTerrain();
     drawTrees();
 
     return;
 }
 
+void TerrainScene::drawTerrain() {
+    m_toonShader->setUniform("m", glm::mat4(1.0f));
+    m_toonShader->setUniform("terrain", true);
+    m_terrain->draw();
+}
+
 void TerrainScene::drawTrees() {
-//    std::set<int> randIndices = this->generateRandIndices();
-    glm::vec3 baseTree = {0, -0.5, 0};
+    float scaleFactor = 0.25f;
+    glm::vec3 baseTree = {0, -scaleFactor * 0.5f, 0};
     std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
- for (int vertexIndex:m_randIndices) {
-     glm::vec3 location = m_terrain->getVertexAtIndex(vertexIndex);
-     glm::vec3 translation = location - baseTree;
-     glm::mat4x4 modelMatrix = glm::translate(translation) * glm::scale(glm::vec3(1.f));
-     m_toonShader->setUniform("m", modelMatrix);
-     m_toonShader->setUniform("terrain", false);
-     m_toonShader->setUniform("objectColor", glm::vec3(0.8, 0.517, 0.141));
-     tree->draw();
 
- }
+    m_toonShader->setUniform("terrain", false);
+    m_toonShader->setUniform("objectColor", glm::vec3(0.090, 0.368, 0.098));
+    float treeOutline = 2.f * scaleFactor * settings.outlineWeight;
+    m_toonShader->setUniform("outlineWeight", treeOutline);
+    glm::mat4 scaleMatrix = glm::scale(glm::vec3(scaleFactor));
+
+    for (int i = 0; i < m_numTrees; i++) {
+        int vertexIndex = m_randIndices[i];
+        glm::vec3 location = m_terrain->getVertexAtIndex(vertexIndex);
+        glm::vec3 translation = location - baseTree;
+        glm::mat4x4 modelMatrix = glm::translate(translation) * scaleMatrix;
+        m_toonShader->setUniform("m", modelMatrix);
+        tree->draw();
+    }
 
 }
 
-/**
- * @brief TerrainScene::generateRandIndices -> NOT USING THIS ANYWHERE; but this generates
- * more random indices, but decided to generate pseudo random indices like the terrain
- * @return
- */
-std::set<int> TerrainScene::generateRandIndices() {
-    std::set<int> randIndices;
-    std::random_device dev;
-    std::mt19937 rng(dev());
+void TerrainScene::generatePseudoRandIndices() {
+    m_randIndices.clear();
     int numVertices = m_terrain->getVertexDataSize();
     int maxIndex = numVertices / 6;
-    std::cout << "numVertices "<< numVertices << std::endl;
-    std::cout << "index: "<< maxIndex << std::endl;
-    while (randIndices.size() < m_numTrees) {
-         std::uniform_int_distribution<std::mt19937::result_type> distRand(1,maxIndex); // distribution in range [1, 6]
-         int index = distRand(rng);
-         randIndices.insert(index);
-         std::cout << index << std::endl;
-    //     if (index % 2 == 0) {// check if even because odd indices are normals
-    //         randIndices.insert(index);
-    //         std::cout << index << std::endl;
-    //     }
-     }
-     return randIndices;
-}
-
-std::set<int> TerrainScene::generatePseudoRandIndices() {
-    std::set<int> randIndices;
-    int numVertices = m_terrain->getVertexDataSize();
-    int maxIndex = numVertices / 6;
-    std::cout << "numVertices "<< numVertices << std::endl;
-    std::cout << "index: "<< maxIndex << std::endl;
 //index: 179998 //make 100 trees the max or something
-    for (int i=1; i<m_numTrees+1; i++) {
+    for (int i=1; i<settings.maxTreeNum+1; i++) {
          int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
          if(index < numVertices) {
-             randIndices.insert(index);
-             std::cout << index << std::endl;
+             m_randIndices.push_back(index);
          }
      }
-     return randIndices;
 }
 
 void TerrainScene::settingsChanged() {
     setToonUniforms();
     setLight();
-    std::cout<<settings.terrainType<<std::endl;
-    std::cout<<"this" <<this->terrainType<<std::endl;
     if (this->terrainType != settings.terrainType) {
 		// update terrain
 		switch (settings.terrainType) {
@@ -191,13 +163,13 @@ void TerrainScene::settingsChanged() {
 				break;
 			default:
 				m_terrain = std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2);
-		}
+        }
 
-		this->terrainType = settings.terrainType;
+        this->terrainType = settings.terrainType;
+        generatePseudoRandIndices();
 	}
     if (this->m_numTrees != settings.numberOfTrees) {
         m_numTrees = settings.numberOfTrees;
-        m_randIndices = this->generatePseudoRandIndices();
     }
 
 }

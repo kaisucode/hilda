@@ -42,9 +42,9 @@ private:
     void renderGeometry();
 
     void setToonUniforms();
+    void drawTerrain();
     void drawTrees();
-    std::set<int> generateRandIndices();
-    std::set<int> generatePseudoRandIndices();
+    void generatePseudoRandIndices();
 
     std::unique_ptr<CS123::GL::CS123Shader> m_toonShader;
 
@@ -57,7 +57,8 @@ private:
 
     glm::vec3 m_backgroundColor;
     int m_numTrees;
-    std::set<int> m_randIndices;
+    std::vector<int> m_randIndices;
+    std::uniform_int_distribution<std::mt19937::result_type> m_distRand();
 
 	int terrainType;
 };

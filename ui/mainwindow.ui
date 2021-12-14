@@ -35,6 +35,9 @@
     </property>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
       </property>
@@ -110,7 +113,11 @@
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="QWidget" name="canvas3D" native="true"/>
+         <widget class="QWidget" name="canvas3D" native="true">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -127,6 +134,9 @@
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="floating">
     <bool>false</bool>
@@ -150,6 +160,9 @@
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
       <widget class="QGroupBox" name="brushType">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Brush Type</string>
        </property>
@@ -162,6 +175,9 @@
         </property>
         <item>
          <widget class="QRadioButton" name="brushTypeConstant">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Constant</string>
           </property>
@@ -172,6 +188,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="brushTypeLinear">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Linear</string>
           </property>
@@ -179,6 +198,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="brushTypeQuadratic">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>&amp;Quadratic</string>
           </property>
@@ -186,6 +208,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="brushTypeSmudge">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>S&amp;mudge</string>
           </property>
@@ -193,6 +218,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="brushTypeSpecial1">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Special &amp;1</string>
           </property>
@@ -200,6 +228,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="brushTypeSpecial2">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Special 2</string>
           </property>
@@ -210,6 +241,9 @@
      </item>
      <item>
       <widget class="QGroupBox" name="brushColor">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Brush Color</string>
        </property>
@@ -237,10 +271,16 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="3" column="2">
          <widget class="QSlider" name="brushColorSliderAlpha">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -248,6 +288,9 @@
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="brushColorLabelGreen">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>G</string>
           </property>
@@ -261,6 +304,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -268,6 +314,9 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="brushColorLabelBlue">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>B</string>
           </property>
@@ -281,6 +330,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -288,6 +340,9 @@
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="brushColorLabelRed">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>R</string>
           </property>
@@ -307,10 +362,16 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="brushColorLabelAlpha">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>A</string>
           </property>
@@ -330,6 +391,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="1" column="3">
@@ -346,6 +410,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="0" column="2">
@@ -355,6 +422,9 @@
             <width>100</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -366,6 +436,9 @@
      </item>
      <item>
       <widget class="QWidget" name="brushRadius" native="true">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <layout class="QGridLayout" name="gridLayout_6">
         <property name="leftMargin">
          <number>0</number>
@@ -399,6 +472,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -412,6 +488,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -419,6 +498,9 @@
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="brushRadiusLabel">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Radius</string>
           </property>
@@ -429,6 +511,9 @@
      </item>
      <item>
       <widget class="QCheckBox" name="brushAlphaBlendingCheckbox">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>No alpha blending</string>
        </property>
@@ -442,6 +527,9 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
       </widget>
      </item>
     </layout>
@@ -450,6 +538,9 @@
   <widget class="QDockWidget" name="shapesDock">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="windowTitle">
     <string>Shapes/Scene&amp;view</string>
@@ -461,6 +552,9 @@
     <layout class="QVBoxLayout" name="verticalLayout_7">
      <item>
       <widget class="QCheckBox" name="showSceneviewInstead">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Show sceneview instead</string>
        </property>
@@ -468,6 +562,9 @@
      </item>
      <item>
       <widget class="QGroupBox" name="shapeType">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Shape Type</string>
        </property>
@@ -480,6 +577,9 @@
         </property>
         <item>
          <widget class="QRadioButton" name="shapeTypeCube">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Cube</string>
           </property>
@@ -490,6 +590,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="shapeTypeCone">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Cone</string>
           </property>
@@ -497,6 +600,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="shapeTypeSphere">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Sphere</string>
           </property>
@@ -504,6 +610,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="shapeTypeCylinder">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Cylinder</string>
           </property>
@@ -511,6 +620,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="shapeTypeTorus">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Torus</string>
           </property>
@@ -518,6 +630,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="shapeTypeSpecial1">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Special 1</string>
           </property>
@@ -525,6 +640,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="shapeTypeSpecial2">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Special 2</string>
           </property>
@@ -535,6 +653,9 @@
      </item>
      <item>
       <widget class="QGroupBox" name="shapeParameters">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Shape Parameters</string>
        </property>
@@ -550,6 +671,9 @@
         </property>
         <item row="0" column="0">
          <widget class="QLabel" name="shapeParameterLabel1">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>1</string>
           </property>
@@ -557,6 +681,9 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="shapeParameterLabel2">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>2</string>
           </property>
@@ -564,6 +691,9 @@
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="shapeParameterLabel3">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>3</string>
           </property>
@@ -576,6 +706,9 @@
             <width>100</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -590,6 +723,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -602,6 +738,9 @@
             <width>100</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -622,6 +761,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="2" column="2">
@@ -637,6 +779,9 @@
             <width>40</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
          </widget>
         </item>
@@ -654,6 +799,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
        </layout>
@@ -661,6 +809,9 @@
      </item>
      <item>
       <widget class="QCheckBox" name="useLightingCheckbox">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Use lighting</string>
        </property>
@@ -668,6 +819,9 @@
      </item>
      <item>
       <widget class="QCheckBox" name="drawWireframeCheckbox">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Draw wireframe</string>
        </property>
@@ -675,6 +829,9 @@
      </item>
      <item>
       <widget class="QCheckBox" name="drawNormalsCheckbox">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Draw normals</string>
        </property>
@@ -688,6 +845,9 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
       </widget>
      </item>
     </layout>
@@ -696,6 +856,9 @@
   <widget class="QDockWidget" name="filterDock">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="windowTitle">
     <string>F&amp;ilter</string>
@@ -707,6 +870,9 @@
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <widget class="QGroupBox" name="filterType">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Filter Type</string>
        </property>
@@ -719,6 +885,9 @@
         </property>
         <item>
          <widget class="Line" name="line_5">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -726,6 +895,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="filterTypeEdgeDetect">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Edge Detect</string>
           </property>
@@ -735,6 +907,9 @@
          <widget class="QWidget" name="edgeDetectThreshold" native="true">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_13">
            <property name="leftMargin">
@@ -751,6 +926,9 @@
            </property>
            <item row="0" column="0">
             <widget class="QLabel" name="edgeDetectSensitivityLabel">
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="text">
               <string>Sensitivity</string>
              </property>
@@ -758,6 +936,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QSlider" name="edgeDetectSensitivitySlider">
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -777,6 +958,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
             </widget>
            </item>
           </layout>
@@ -784,6 +968,9 @@
         </item>
         <item>
          <widget class="Line" name="line">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -791,6 +978,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="filterTypeBlur">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Blur</string>
           </property>
@@ -798,6 +988,9 @@
         </item>
         <item>
          <widget class="QWidget" name="blurRadius" native="true">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <layout class="QGridLayout" name="gridLayout_8">
            <property name="leftMargin">
             <number>0</number>
@@ -828,6 +1021,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
             </widget>
            </item>
            <item row="0" column="1">
@@ -841,6 +1037,9 @@
                <height>0</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -850,6 +1049,9 @@
             <widget class="QLabel" name="blurRadiusLabel">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
              </property>
              <property name="text">
               <string>Radius</string>
@@ -861,6 +1063,9 @@
         </item>
         <item>
          <widget class="Line" name="line_2">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -870,6 +1075,9 @@
          <widget class="QRadioButton" name="filterTypeScale">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="text">
            <string>Scale</string>
@@ -881,6 +1089,9 @@
         </item>
         <item>
          <widget class="QWidget" name="scale" native="true">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <layout class="QGridLayout" name="gridLayout_9">
            <property name="leftMargin">
             <number>0</number>
@@ -902,6 +1113,9 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="text">
               <string>X</string>
              </property>
@@ -917,6 +1131,9 @@
                <width>100</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -940,12 +1157,18 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
             </widget>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="scaleLabelY">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
              </property>
              <property name="text">
               <string>Y</string>
@@ -962,6 +1185,9 @@
                <width>100</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -985,6 +1211,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
             </widget>
            </item>
           </layout>
@@ -992,6 +1221,9 @@
         </item>
         <item>
          <widget class="Line" name="line_3">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -999,6 +1231,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="filterTypeRotate">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Rotate</string>
           </property>
@@ -1006,6 +1241,9 @@
         </item>
         <item>
          <widget class="QWidget" name="rotateAngle" native="true">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <layout class="QGridLayout" name="gridLayout_17">
            <property name="leftMargin">
             <number>0</number>
@@ -1024,6 +1262,9 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="text">
               <string>Angle</string>
              </property>
@@ -1033,6 +1274,9 @@
             <widget class="QSlider" name="rotateSlider">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
              </property>
              <property name="minimum">
               <number>-360</number>
@@ -1056,6 +1300,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
             </widget>
            </item>
           </layout>
@@ -1063,6 +1310,9 @@
         </item>
         <item>
          <widget class="Line" name="line_4">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1070,6 +1320,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="filterTypeSpecial1">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Special 1</string>
           </property>
@@ -1077,6 +1330,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="filterTypeSpecial2">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Special 2</string>
           </property>
@@ -1084,6 +1340,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="filterTypeSpecial3">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Special 3</string>
           </property>
@@ -1094,6 +1353,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="filterButton">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Filter!</string>
        </property>
@@ -1107,6 +1369,9 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
       </widget>
      </item>
     </layout>
@@ -1115,6 +1380,9 @@
   <widget class="QDockWidget" name="rayDock">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="windowTitle">
     <string>&amp;Ray</string>
@@ -1126,6 +1394,9 @@
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
       <widget class="QWidget" name="rayAllOrNone" native="true">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="leftMargin">
          <number>0</number>
@@ -1141,6 +1412,9 @@
         </property>
         <item>
          <widget class="QPushButton" name="rayAllButton">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>All</string>
           </property>
@@ -1148,6 +1422,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="rayNoneButton">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>None</string>
           </property>
@@ -1158,6 +1435,9 @@
      </item>
      <item>
       <widget class="QGroupBox" name="rayFeatures">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Features</string>
        </property>
@@ -1170,6 +1450,9 @@
         </property>
         <item>
          <widget class="QCheckBox" name="raySuperSamping">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Super sampling</string>
           </property>
@@ -1182,6 +1465,9 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
            <property name="topMargin">
@@ -1200,6 +1486,9 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
              </property>
              <property name="text">
               <string>sqrt(samples)</string>
@@ -1229,6 +1518,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -1239,6 +1531,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayAntiAliasing">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Anti-aliasing</string>
           </property>
@@ -1246,6 +1541,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayShadows">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Shadows</string>
           </property>
@@ -1253,6 +1551,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayTextureMapping">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Texture Mapping</string>
           </property>
@@ -1260,6 +1561,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayReflection">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Reflection</string>
           </property>
@@ -1267,6 +1571,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayRefraction">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Refraction</string>
           </property>
@@ -1274,6 +1581,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayMultiThreading">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Multithreading</string>
           </property>
@@ -1281,6 +1591,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayUseKDTree">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Use KD tree</string>
           </property>
@@ -1291,6 +1604,9 @@
      </item>
      <item>
       <widget class="QGroupBox" name="rayLighting">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Lighting</string>
        </property>
@@ -1303,6 +1619,9 @@
         </property>
         <item>
          <widget class="QCheckBox" name="rayPointLights">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Point lights</string>
           </property>
@@ -1310,6 +1629,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="rayDirectionalLights">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Directional lights</string>
           </property>
@@ -1317,6 +1639,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="raySpotLights">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Spot lights</string>
           </property>
@@ -1327,6 +1652,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="rayRenderButton">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Render!</string>
        </property>
@@ -1334,6 +1662,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="rayStopRenderingButton">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Stop rendering</string>
        </property>
@@ -1347,6 +1678,9 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
       </widget>
      </item>
     </layout>
@@ -1355,6 +1689,9 @@
   <widget class="QDockWidget" name="camtransDock">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="windowTitle">
     <string>&amp;Camtrans</string>
@@ -1366,6 +1703,9 @@
     <layout class="QVBoxLayout" name="verticalLayout_10">
      <item>
       <widget class="QCheckBox" name="cameraOrbitCheckbox">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Use orbit camera instead</string>
        </property>
@@ -1373,6 +1713,9 @@
      </item>
      <item>
       <widget class="QGroupBox" name="cameraPosition">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Translation</string>
        </property>
@@ -1388,6 +1731,9 @@
         </property>
         <item row="1" column="0">
          <widget class="QLabel" name="cameraPositionLabelX">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>X</string>
           </property>
@@ -1398,6 +1744,9 @@
         </item>
         <item row="1" column="1">
          <widget class="QLabel" name="cameraPositionLabelY">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Y</string>
           </property>
@@ -1408,6 +1757,9 @@
         </item>
         <item row="1" column="2">
          <widget class="QLabel" name="cameraPositionLabelZ">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Z</string>
           </property>
@@ -1429,6 +1781,9 @@
             <width>60</width>
             <height>60</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="minimum">
            <number>-360</number>
@@ -1467,6 +1822,9 @@
             <height>60</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="minimum">
            <number>-360</number>
           </property>
@@ -1504,6 +1862,9 @@
             <height>60</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="minimum">
            <number>-360</number>
           </property>
@@ -1535,6 +1896,9 @@
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Rotation</string>
        </property>
@@ -1547,6 +1911,9 @@
         </property>
         <item>
          <widget class="QWidget" name="cameraRotation_2" native="true">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <layout class="QGridLayout" name="gridLayout_15">
            <property name="leftMargin">
             <number>0</number>
@@ -1576,6 +1943,9 @@
                <width>60</width>
                <height>60</height>
               </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
              </property>
              <property name="minimum">
               <number>-360</number>
@@ -1614,6 +1984,9 @@
                <height>60</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="minimum">
               <number>-360</number>
              </property>
@@ -1651,6 +2024,9 @@
                <height>60</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="minimum">
               <number>-360</number>
              </property>
@@ -1676,6 +2052,9 @@
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="cameraRotationLabelYaw">
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="text">
               <string>U</string>
              </property>
@@ -1686,6 +2065,9 @@
            </item>
            <item row="1" column="1">
             <widget class="QLabel" name="cameraRotationLabelPitch">
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="text">
               <string>V</string>
              </property>
@@ -1696,6 +2078,9 @@
            </item>
            <item row="1" column="2">
             <widget class="QLabel" name="cameraRotationLabelRoll">
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
              <property name="text">
               <string>W</string>
              </property>
@@ -1709,6 +2094,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="resetUpVector">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Reset up vector</string>
           </property>
@@ -1725,12 +2113,18 @@
          <height>0</height>
         </size>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="title">
         <string>Reset</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_14">
         <item row="0" column="0">
          <widget class="QPushButton" name="xAxisButton">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>X axis</string>
           </property>
@@ -1738,6 +2132,9 @@
         </item>
         <item row="1" column="0">
          <widget class="QPushButton" name="yAxisButton">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Y axis</string>
           </property>
@@ -1745,6 +2142,9 @@
         </item>
         <item row="0" column="1">
          <widget class="QPushButton" name="zAxisButton">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Z axis</string>
           </property>
@@ -1752,6 +2152,9 @@
         </item>
         <item row="1" column="1">
          <widget class="QPushButton" name="axonometricButton">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Axonometric</string>
           </property>
@@ -1762,6 +2165,9 @@
      </item>
      <item>
       <widget class="QWidget" name="cameraFrustum" native="true">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <layout class="QGridLayout" name="gridLayout_5">
         <property name="leftMargin">
          <number>0</number>
@@ -1780,6 +2186,9 @@
         </property>
         <item row="0" column="0">
          <widget class="QLabel" name="cameraFovLabel">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>FOV</string>
           </property>
@@ -1799,6 +2208,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="0" column="1">
@@ -1809,6 +2221,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1816,6 +2231,9 @@
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="cameraNearLabel">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Near</string>
           </property>
@@ -1835,10 +2253,16 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="cameraFarLabel">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Far</string>
           </property>
@@ -1858,6 +2282,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
          </widget>
         </item>
         <item row="1" column="1">
@@ -1867,6 +2294,9 @@
             <width>100</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -1881,6 +2311,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1891,6 +2324,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="resetSliders">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Reset FOV / Near / Far</string>
        </property>
@@ -1898,6 +2334,9 @@
      </item>
      <item>
       <widget class="QLabel" name="cameraAspectRatio">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
        <property name="text">
         <string>Aspect ratio:</string>
        </property>
@@ -1907,6 +2346,9 @@
       <widget class="QLabel" name="label">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
        </property>
        <property name="text">
         <string>Resize the window to change the aspect ratio.</string>
@@ -1923,6 +2365,9 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
        </property>
       </widget>
      </item>
@@ -1961,6 +2406,9 @@
    <addaction name="menuToolbars"/>
   </widget>
   <widget class="QDockWidget" name="cartoonDock_2">
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
    <property name="windowTitle">
     <string>Cartoon World</string>
    </property>
@@ -1989,6 +2437,9 @@
        <height>16777215</height>
       </size>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -2008,6 +2459,9 @@
        <height>0</height>
       </size>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -2020,6 +2474,9 @@
        <width>29</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="text">
       <string>Time</string>
@@ -2034,6 +2491,9 @@
        <height>111</height>
       </rect>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="title">
       <string>Terrain Type</string>
      </property>
@@ -2046,6 +2506,9 @@
       </property>
       <item>
        <widget class="QRadioButton" name="TerrainLab">
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
+        </property>
         <property name="text">
          <string>Lab</string>
         </property>
@@ -2056,6 +2519,9 @@
       </item>
       <item>
        <widget class="QRadioButton" name="TerrainLake">
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
+        </property>
         <property name="text">
          <string>Lake</string>
         </property>
@@ -2063,6 +2529,9 @@
       </item>
       <item>
        <widget class="QRadioButton" name="TerrainCliff">
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
+        </property>
         <property name="text">
          <string>Cliff</string>
         </property>
@@ -2091,6 +2560,9 @@
        <height>16777215</height>
       </size>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -2103,6 +2575,9 @@
        <width>41</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="text">
       <string>Trees</string>
@@ -2123,6 +2598,9 @@
        <height>0</height>
       </size>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -2136,6 +2614,9 @@
        <height>22</height>
       </rect>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="text">
       <string>Use outlines</string>
      </property>
@@ -2148,6 +2629,9 @@
        <width>111</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="text">
       <string>Outline weight</string>
@@ -2167,6 +2651,9 @@
        <width>100</width>
        <height>0</height>
       </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -2192,6 +2679,9 @@
        <width>60</width>
        <height>16777215</height>
       </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="text">
       <string/>

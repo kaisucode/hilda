@@ -13,16 +13,13 @@ uniform vec4 shadowTint;
 uniform vec4 highlightTint;
 uniform vec3 outlineColor;
 uniform bool useOutlines;
-uniform float outlineThickness;
+uniform float outlineWeight;
 
 void main() {
-    float vertToEyeDist = length(WS_position.xz - WS_camPosition.xz);
+    float vertToEyeDist = length(WS_position - WS_camPosition.xyz);
 
-//    float maxOutlineThick = min(0.25, 0.25 / sqrt(vertToEyeDist));
-//    float minOutlineThick = min(0.15, 0.15 / sqrt(vertToEyeDist));
-
-    float maxOutlineThick = outlineThickness + 0.025;
-    float minOutlineThick = outlineThickness - 0.025;
+    float maxOutlineWeight = outlineWeight + 0.025;
+    float minOutlineWeight = outlineWeight - 0.025;
 
     vec3 WS_toLight = normalize(lightDir.xyz);
     float luminosity = 0.1 + 0.9 * max(0.0, dot(normalize(WS_normal), WS_toLight));
@@ -30,7 +27,7 @@ void main() {
     fragColor = baseColor;
 
     if (useOutlines && dot(normalize(WS_camPosition.xyz - WS_position), WS_normal)
-                   < mix(maxOutlineThick, minOutlineThick,
+                   < mix(maxOutlineWeight, minOutlineWeight,
                    max(0.0, dot(WS_normal, WS_toLight)))) {
         fragColor = outlineColor;
     }

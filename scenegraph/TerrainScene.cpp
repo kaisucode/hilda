@@ -147,9 +147,9 @@ std::set<int> TerrainScene::generatePseudoRandIndices() {
     std::cout << "numVertices "<< numVertices << std::endl;
     std::cout << "index: "<< maxIndex << std::endl;
 //index: 179998 //make 100 trees the max or something
-    for (int i=0; i<m_numTrees; i++) {
-         int index = 179 * (((i-1)*3 + 37)%101);
-         if(index < maxIndex) {
+    for (int i=1; i<m_numTrees+1; i++) {
+         int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
+         if(index < numVertices) {
              randIndices.insert(index);
              std::cout << index << std::endl;
          }
@@ -158,7 +158,6 @@ std::set<int> TerrainScene::generatePseudoRandIndices() {
 }
 
 void TerrainScene::settingsChanged() {
-    m_randIndices = this->generatePseudoRandIndices();
     setToonUniforms();
     setLight();
     std::cout<<settings.terrainType<<std::endl;
@@ -183,6 +182,7 @@ void TerrainScene::settingsChanged() {
 	}
     if (this->m_numTrees != settings.numberOfTrees) {
         m_numTrees = settings.numberOfTrees;
+        m_randIndices = this->generatePseudoRandIndices();
     }
 
 }

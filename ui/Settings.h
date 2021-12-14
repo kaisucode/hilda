@@ -86,7 +86,7 @@ struct Settings {
     // Loads settings from disk, or fills in default values if no saved settings exist.
     void loadSettingsOrDefaults();
 
-	int terrainType;
+
 
     // Saves the current settings to disk.
     void saveSettings();
@@ -146,6 +146,7 @@ struct Settings {
 
     // Final
     float timeOfDay;
+    int terrainType;
 
     int getSceneMode();
     int getCameraMode();

@@ -17,14 +17,18 @@
 using namespace CS123::GL;
 
 TerrainScene::TerrainScene() :
-	m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
-	terrainType(TERRAIN_LAB),
-	// m_terrain(std::make_unique<TerrainCliff>(settings.shapeParameter1, settings.shapeParameter2)),
-	// terrainType(TERRAIN_CLIFF),
+    m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
+    terrainType(TERRAIN_LAB),
+//     m_terrain(std::make_unique<TerrainCliff>(settings.shapeParameter1, settings.shapeParameter2)),
+//     terrainType(TERRAIN_CLIFF),
     // m_terrain(std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2)),
     m_sceneLight(),
-    m_backgroundColor(0.8f, 0.93f, 0.96f)
+    m_backgroundColor(0.8f, 0.93f, 0.96f),
+    m_numTrees(0)
 {
+
+    settings.terrainType = this->terrainType;
+
     loadShaders();
     settingsChanged();
 }
@@ -157,13 +161,10 @@ void TerrainScene::settingsChanged() {
     m_randIndices = this->generatePseudoRandIndices();
     setToonUniforms();
     setLight();
-
-	if (settings.terrainType == NULL) {
-		settings.terrainType = this->terrainType;
-	}
-	else if (this->terrainType != settings.terrainType) {
+    std::cout<<settings.terrainType<<std::endl;
+    std::cout<<"this" <<this->terrainType<<std::endl;
+    if (this->terrainType != settings.terrainType) {
 		// update terrain
-		
 		switch (settings.terrainType) {
 			case TERRAIN_LAB:
 				m_terrain = std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2);
@@ -180,5 +181,8 @@ void TerrainScene::settingsChanged() {
 
 		this->terrainType = settings.terrainType;
 	}
+    if (this->m_numTrees != settings.numberOfTrees) {
+        m_numTrees = settings.numberOfTrees;
+    }
 
 }

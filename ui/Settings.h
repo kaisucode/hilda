@@ -15,6 +15,7 @@ enum TerrainType {
 	TERRAIN_LAB,
 	TERRAIN_LAKE,
 	TERRAIN_CLIFF,
+    NUM_TERRAIN_TYPES
 };
 
 // Enumeration values for the Brush types from which the user can choose in the GUI.
@@ -147,6 +148,7 @@ struct Settings {
     // Final
     float timeOfDay;
     int terrainType;
+    int numberOfTrees;
 
     int getSceneMode();
     int getCameraMode();

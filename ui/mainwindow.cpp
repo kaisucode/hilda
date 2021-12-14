@@ -129,9 +129,11 @@ void MainWindow::dataBind() {
     QButtonGroup *brushButtonGroup = new QButtonGroup;
     QButtonGroup *shapesButtonGroup = new QButtonGroup;
     QButtonGroup *filterButtonGroup = new QButtonGroup;
+    QButtonGroup *terrainButtonGroup = new QButtonGroup; //Final
     m_buttonGroups.push_back(brushButtonGroup);
     m_buttonGroups.push_back(shapesButtonGroup);
     m_buttonGroups.push_back(filterButtonGroup);
+    m_buttonGroups.push_back(terrainButtonGroup);
 
     BIND(ChoiceBinding::bindRadioButtons(
             brushButtonGroup,
@@ -239,6 +241,15 @@ void MainWindow::dataBind() {
     // Final dock
     BIND(FloatBinding::bindSliderAndTextbox(
              ui->timeOfDaySlider, ui->timeOfDayTextbox, settings.timeOfDay, 6.f, 18.f))
+    BIND(ChoiceBinding::bindRadioButtons(
+            terrainButtonGroup,
+            NUM_TERRAIN_TYPES,
+            settings.terrainType,
+            ui->TerrainLab,
+            ui->TerrainLake,
+            ui->TerrainCliff))
+    BIND(IntBinding::bindSliderAndTextbox(
+             ui->numTreesSlider, ui->numTreesTextbox, settings.numberOfTrees, 0, 100))
 
 #undef BIND
 

@@ -37,20 +37,21 @@ float TerrainCliff::randValue(int row, int col)
 }
 
 
-float hash(glm::vec3 p)  // replace this by something better
+float TerrainCliff::hash(glm::vec3 p)  // replace this by something better
 {
     p  = 50.0f * glm::fract(p * 0.3183099f + glm::vec3(0.71,0.113,0.419));
-    return -1.0 + 2.0 * glm::fract(p.x * p.y * p.z * (p.x + p.y + p.z));
+	return -1.0 + 2.0 * glm::fract(p.x * p.y * p.z * (p.x + p.y + p.z));
 }
 
 
-glm::vec4 noised(glm::vec3 x)
+float TerrainCliff::noised(glm::vec3 x)
 {
 	glm::vec3 i = glm::floor(x / 20.0f);
 	glm::vec3 w = glm::fract(x / 20.0f);
     
     // quintic interpolation
-	glm::vec3 u = w*w*w*(w*(w*6.0f - 15.0f)+10.0f);
+	glm::vec3 u = w * w * w * (w * (w * 6.0f - 15.0f) + 10.0f);
+	// glm::vec3 u = w * w * (3.0f - 2.0f * w);
 	glm::vec3 du = 30.0f*w*w*(w*(w-2.0f)+1.0f);
     
 	float temp = 20.0f;
@@ -72,30 +73,21 @@ glm::vec4 noised(glm::vec3 x)
     float k6 =   a - b - e + f;
     float k7 = - a + b + c - d + e - f - g + h;
 
-	glm::vec3 uyzx = glm::vec3(u.y, u.z, u.x);
-	glm::vec3 uzxy = glm::vec3(u.z, u.x, u.y);
-
-	// return k0 + k1*u.x + k2*u.y + k3*u.z + k4*u.x*u.y + k5*u.y*u.z + k6*u.z*u.x + k7*u.x*u.y*u.z;
-	return glm::vec4( k0 + k1*u.x + k2*u.y + k3*u.z + k4*u.x*u.y + k5*u.y*u.z + k6*u.z*u.x + k7*u.x*u.y*u.z, \
-                 du * (glm::vec3(k1,k2,k3) + uyzx*glm::vec3(k4,k5,k6) + uzxy*glm::vec3(k6,k4,k5) + k7*uyzx*uzxy ));
+	return k0 + k1*u.x + k2*u.y + k3*u.z + k4*u.x*u.y + k5*u.y*u.z + k6*u.z*u.x + k7*u.x*u.y*u.z;
 
 }
 
 float TerrainCliff::getNoise( glm::vec3 x )
 {
 	const float scale  = 1.5f;
-    // const float scale  = 3.0f;
 
     float a = 0.0f;
     float b = 0.5f;
-	// float f = 1.0f;
 	float f = 1.98f;
 	glm::vec3 d = glm::vec3(0.0f);
 
-	for (int i = 0; i < 16; i++) {
-		glm::vec4 noisedOutput = noised(f*x*scale);
-        a += b * noisedOutput.x;           // accumulate values		
-        d += b * glm::vec3(noisedOutput.y, noisedOutput.z, noisedOutput.w) * f * scale; // accumulate derivatives
+	for (int i = 0; i < 8; i++) {
+        a += b * noised(f * x * scale);           // accumulate values		
         b *= 0.49f;             // amplitude decrease
         f *= 1.8f;             // frequency increase
     }
@@ -157,11 +149,29 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
 
 	// float noise = randValue(row, col) * 0.08 / (m_length_modifier * m_length_modifier);
 	// float noise = noised(position);
-	float noise = fabs(getNoise(position));
+	glm::vec3 newPos(position);
+	// newPos.x = fabs(newPos.x);
+	
+	if (newPos.x < 0) {
+		newPos.x = fabs(newPos.x - 0.03) * 2;
+	}
+	if (newPos.z < 0) {
+		newPos.z = fabs(newPos.z - 0.1) * 2;
+	}
+
+	float noise = fabs(getNoise(newPos));
 	// float noise = (fbmd(position).x);
 
 	position.y = std::pow(noise * 1.1f, 3);
 	position.y = pow(position.y, 2) + position.y * 2;
+
+	float distFromCenterSquared = position.x * position.x + position.z * position.z;
+	if (distFromCenterSquared > m_centerRadius * m_centerRadius) {
+		position.y += randValue(row, col) * 0.008;
+	}
+	else {
+		position.y += randValue(row, col) * 0.001;
+	}
 
 	// position.y = pow(position.y, 2) + position.y * 2 + noise;
 

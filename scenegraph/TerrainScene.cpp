@@ -18,6 +18,7 @@ using namespace CS123::GL;
 
 TerrainScene::TerrainScene() :
     m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
+	terrainType(TERRAIN_LAB),
     // m_terrain(std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2)),
     // m_terrain(std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2)),
     m_sceneLight(),
@@ -155,4 +156,25 @@ void TerrainScene::settingsChanged() {
     m_randIndices = this->generatePseudoRandIndices();
     setToonUniforms();
     setLight();
+
+	if (this->terrainType != settings.terrainType) {
+		// update terrain
+		
+		switch (settings.terrainType) {
+			case TERRAIN_LAB:
+				m_terrain = std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2);
+				break;
+			case TERRAIN_LAKE:
+				m_terrain = std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2);
+				break;
+			case TERRAIN_CLIFF:
+				m_terrain = std::make_unique<TerrainCliff>(settings.shapeParameter1, settings.shapeParameter2);
+				break;
+			default:
+				m_terrain = std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2);
+		}
+
+		this->terrainType = settings.terrainType;
+	}
+
 }

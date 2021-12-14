@@ -11,6 +11,12 @@
 #include <QObject>
 #include "RGBA.h"
 
+enum TerrainType {
+	TERRAIN_LAB,
+	TERRAIN_LAKE,
+	TERRAIN_CLIFF,
+};
+
 // Enumeration values for the Brush types from which the user can choose in the GUI.
 enum BrushType {
     BRUSH_CONSTANT,
@@ -79,6 +85,8 @@ enum CameraMode {
 struct Settings {
     // Loads settings from disk, or fills in default values if no saved settings exist.
     void loadSettingsOrDefaults();
+
+	int terrainType;
 
     // Saves the current settings to disk.
     void saveSettings();

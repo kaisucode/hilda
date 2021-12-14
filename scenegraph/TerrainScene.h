@@ -3,6 +3,7 @@
 
 #include "OpenGLScene.h"
 // #include "shapes/TerrainShape.h"
+
 #include "shapes/terrain/TerrainBase.h"
 #include "shapes/terrain/TerrainBowl.h"
 #include "shapes/terrain/TerrainCliff.h"
@@ -57,6 +58,8 @@ private:
     glm::vec3 m_backgroundColor;
     int m_numTrees = 10;
     std::set<int> m_randIndices;
+
+	int terrainType;
 };
 
 #endif // TERRAINSCENE_H

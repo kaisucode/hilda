@@ -149,6 +149,8 @@ struct Settings {
     float timeOfDay;
     int terrainType;
     int numberOfTrees;
+    bool useOutlines;
+    float outlineWeight;
 
     int getSceneMode();
     int getCameraMode();

@@ -121,6 +121,8 @@ glm::vec3 TerrainBowl::getPosition(int row, int col)
     // position.y = pow(position.y, 2) + position.y * 2 + randValue(row, col) * 0.08 + 0.3 * randValue(newYRowCeiling, newYColCeiling);
 	// position.y = randValue(newRow, newCol);
 
+    position.y += 2.5;
+
     return position;
 }
 

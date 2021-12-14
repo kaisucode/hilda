@@ -16,6 +16,9 @@
 
 using namespace CS123::GL;
 
+/**
+ * @brief TerrainScene::TerrainScene scene used for final project to display terrain generation with trees
+ */
 TerrainScene::TerrainScene() :
     m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
     terrainType(TERRAIN_LAB),
@@ -36,11 +39,15 @@ TerrainScene::TerrainScene() :
 TerrainScene::~TerrainScene() {
 }
 
+/**
+ * @brief TerrainScene::loadShaders loads shader files
+ */
 void TerrainScene::loadShaders() {
     std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/toon.vert");
     std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/toon.frag");
     m_toonShader = std::make_unique<CS123Shader>(vertexSource, fragmentSource);
 }
+
 
 void TerrainScene::render(SupportCanvas3D *context) {
     glClearColor(m_backgroundColor.x, m_backgroundColor.y, m_backgroundColor.z, 1.f);
@@ -49,12 +56,15 @@ void TerrainScene::render(SupportCanvas3D *context) {
     m_toonShader->bind();
     setLight();
     setToonUniforms();
-    setMatrixUniforms(context);
+    setCameraUniforms(context);
     renderGeometry();
     glBindTexture(GL_TEXTURE_2D, 0);
     m_toonShader->unbind();
 }
 
+/**
+ * @brief TerrainScene::setLight updates light angle and background color tint according to time slider
+ */
 void TerrainScene::setLight() {
     float sunPercent = (glm::clamp(settings.timeOfDay, 6.f, 18.f) - 6.f) / 12.f;
     float sunAngle = sunPercent * M_PI;
@@ -66,7 +76,11 @@ void TerrainScene::setLight() {
     m_toonShader->setUniform("backgroundColor", m_backgroundColor);
 }
 
-void TerrainScene::setMatrixUniforms(SupportCanvas3D *context) {
+/**
+ * @brief TerrainScene::setCameraUniforms sets projection and view matrices and position of camera
+ * @param context
+ */
+void TerrainScene::setCameraUniforms(SupportCanvas3D *context) {
 	CamtransCamera *camera = context->getCamtransCamera();
 	m_toonShader->setUniform("WS_camPosition", camera->getPosition());
     // m_toonShader->setUniform("p", camera->getProjectionMatrix());
@@ -74,23 +88,24 @@ void TerrainScene::setMatrixUniforms(SupportCanvas3D *context) {
 
     m_toonShader->setUniform("p", context->getCamera()->getProjectionMatrix());
     m_toonShader->setUniform("v", context->getCamera()->getViewMatrix());
-	m_toonShader->setUniform("m", glm::mat4(1.0f));
 }
+
 
 void TerrainScene::setToonUniforms() {
     m_toonShader->setUniform("shadowTint", glm::vec4(0.054, 0.058, 0.384, 0.2));
     m_toonShader->setUniform("highlightTint", glm::vec4(0.992, 0.878, 0.666, 0.2));
+    m_toonShader->setUniform("useOutlines", settings.useOutlines);
     m_toonShader->setUniform("outlineColor", glm::vec3(0.2));
+    m_toonShader->setUniform("outlineThickness", settings.outlineWeight);
 }
 
 void TerrainScene::renderGeometry() {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    m_toonShader->setUniform("m", glm::mat4(1));
+    m_toonShader->setUniform("m", glm::mat4(1.0f));
 //    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
 //    tree->draw();
 //    m_toonShader->setUniform("objectColor", glm::vec3(0.3, 0.6, 0.4));
     m_toonShader->setUniform("terrain", true);
-    m_toonShader->setUniform("m", glm::mat4(1));
     m_terrain->draw();
     drawTrees();
 
@@ -104,8 +119,8 @@ void TerrainScene::drawTrees() {
  for (int vertexIndex:m_randIndices) {
      glm::vec3 location = m_terrain->getVertexAtIndex(vertexIndex);
      glm::vec3 translation = location - baseTree;
-     glm::mat4x4 translationMatrix = glm::translate(translation);
-     m_toonShader->setUniform("m", translationMatrix);
+     glm::mat4x4 modelMatrix = glm::translate(translation) * glm::scale(glm::vec3(1.f));
+     m_toonShader->setUniform("m", modelMatrix);
      m_toonShader->setUniform("terrain", false);
      m_toonShader->setUniform("objectColor", glm::vec3(0.8, 0.517, 0.141));
      tree->draw();

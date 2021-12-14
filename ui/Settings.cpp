@@ -72,6 +72,12 @@ void Settings::loadSettingsOrDefaults() {
     useSpotLights = s.value("useSpotLights", true).toBool();
     useKDTree = s.value("useKDTree", true).toBool();
 
+    // Final
+    useOutlines = true;
+    numberOfTrees = 10;
+    outlineWeight = 0.2;
+
+
     currentTab = s.value("currentTab", TAB_2D).toBool();
 
     // These are for computing deltas and the values don't matter, so start all dials in the up

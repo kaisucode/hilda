@@ -5,7 +5,7 @@ TreeShape::TreeShape()
     //	m_param1 = std::max(1, param1); // number of layers of triangles
     //	m_param2 = std::max(3, param2); // number of sides
         m_param1 = 2; // number of layers of triangles
-        m_param2 = 4; // number of sides
+        m_param2 = 7; // number of sides
         // build circumference vertices (initialized with y-values of -0.5f)
         std::vector<Vertex> circumferenceVertices = this->buildCircumferenceVertices(m_param2);
 
@@ -19,7 +19,7 @@ TreeShape::TreeShape(std::vector<GLfloat> *vertexData) {
     //	m_param1 = std::max(1, param1); // number of layers of triangles
     //	m_param2 = std::max(3, param2); // number of sides
         m_param1 = 2; // number of layers of triangles
-        m_param2 = 4; // number of sides
+        m_param2 = 7; // number of sides
         // build circumference vertices (initialized with y-values of -0.5f)
         m_vertexData = *vertexData;
         std::vector<Vertex> circumferenceVertices = this->buildCircumferenceVertices(m_param2);

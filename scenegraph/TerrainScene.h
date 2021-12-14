@@ -38,7 +38,7 @@ private:
     void setLight();
 
     void loadShaders();
-    void setMatrixUniforms(SupportCanvas3D *context);
+    void setCameraUniforms(SupportCanvas3D *context);
     void renderGeometry();
 
     void setToonUniforms();

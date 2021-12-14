@@ -22,16 +22,16 @@ void main() {
     }
     else {
         float height = WS_position.y;
-        if (height > 1) {
+        if (height > 2.5) {
             baseColor = vec3(0.952, 0.949, 0.949);
         }
-        else if (height > 0) {
+        else if (height > 0.3) {
             baseColor = vec3(0.745, 0.717, 0.674);
         }
-        else if (height > -0.7) {
+        else if (height > -0.3) {
             baseColor = vec3(0.3, 0.6, 0.4);
         }
-        else if (height > -0.8) {
+        else if (height > -0.4) {
             baseColor = vec3(0.847, 0.796, 0.552);
         }
         else {

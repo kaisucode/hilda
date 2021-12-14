@@ -48,6 +48,9 @@ SOURCES += \
     shapes/ConeShape.cpp \
     shapes/SphereShape.cpp \
 		shapes/TerrainShape.cpp \
+		shapes/terrain/TerrainBase.cpp \
+		shapes/terrain/TerrainBowl.cpp \
+		shapes/terrain/TerrainCliff.cpp \
     shapes/ExampleShape.cpp \
     shapes/OpenGLShape.cpp \
     shapes/TreeShape.cpp \
@@ -114,6 +117,9 @@ HEADERS += \
     shapes/ConeShape.h \
     shapes/SphereShape.h \
 		shapes/TerrainShape.h \
+		shapes/terrain/TerrainBase.h \
+		shapes/terrain/TerrainBowl.h \
+		shapes/terrain/TerrainCliff.h \
     shapes/ExampleShape.h \
     shapes/OpenGLShape.h \
     shapes/TreeShape.h \

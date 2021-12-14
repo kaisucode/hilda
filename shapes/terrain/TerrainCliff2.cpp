@@ -88,7 +88,6 @@ float TerrainCliff::getNoise( glm::vec3 x )
 
     float a = 0.0f;
     float b = 0.5f;
-	// float f = 1.0f;
 	float f = 1.98f;
 	glm::vec3 d = glm::vec3(0.0f);
 
@@ -115,48 +114,6 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
     position.y = 0;
     position.z = 10 * col/m_numCols - 5;
 
-    // TODO: Adjust position.y using value noise.
-	
-	// position.y = randValue(row, col);
-
-	int newRowFloor = glm::floor(row / 20.0f);
-	int newColFloor = glm::floor(col / 20.0f);
-	int newRowCeiling = glm::ceil(row / 20.0f);
-	int newColCeiling = glm::ceil(col / 20.0f);
-	// position.y = randValue(newRow, newCol);
-
-	float aYPosition = randValue(newRowFloor, newColFloor);
-	float bYPosition = randValue(newRowFloor, newColCeiling);
-	float cYPosition = randValue(newRowCeiling, newColFloor);
-	float dYPosition = randValue(newRowCeiling, newColCeiling);
-
-	// float aYPosition = randValue(glm::floor(row / 20.0f), glm::floor(newCol);
-	// float bYPosition = randValue(newRow, newCol + 1);
-	// float cYPosition = randValue(newRow + 1, newCol);
-	// float dYPosition = randValue(newRow + 1, newCol + 1);
-
-
-	// u = (position.x - row * 20.0f) / 20.0f;
-	// v = (position.z - col * 20.0f) / 20.0f;
-
-	float u = glm::fract(col / 20.0f);
-	float v = glm::fract(row / 20.0f);
-
-	float bicubicU = pow(u, 2) * (3 - 2 * u);
-	float bicubicV = pow(v, 2) * (3 - 2 * v);
-
-	float ab = glm::mix(aYPosition, bYPosition, bicubicU);
-	float cd = glm::mix(cYPosition, dYPosition, bicubicU);
-
-	position.y = glm::mix(ab, cd, bicubicV) / m_length_modifier;
-
-	int newYRowCeiling = glm::ceil(row / 20.0f);
-	int newYColCeiling = glm::ceil(col / 20.0f);
-
-	// float distFromCenterSquared = position.x * position.x + position.z * position.z;
-
-	// float noise = randValue(row, col) * 0.08 / (m_length_modifier * m_length_modifier);
-	// float noise = noised(position);
 	float noise = fabs(getNoise(position));
 	// float noise = (fbmd(position).x);
 

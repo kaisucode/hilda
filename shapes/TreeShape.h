@@ -1,7 +1,7 @@
 #ifndef TREESHAPE_H
 #define TREESHAPE_H
 
-#include "OpenGLShape.h"
+#include "shapes/OpenGLShape.h"
 //#define TREE_DATA_POSITIONS {
 // 0.148778 -0.987688 -0.048341
 // 0.126558 -0.987688 -0.091950

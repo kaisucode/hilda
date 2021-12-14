@@ -2,7 +2,11 @@
 #define TERRAINSCENE_H
 
 #include "OpenGLScene.h"
-#include "shapes/TerrainShape.h"
+// #include "shapes/TerrainShape.h"
+#include "shapes/terrain/TerrainBase.h"
+#include "shapes/terrain/TerrainBowl.h"
+#include "shapes/terrain/TerrainCliff.h"
+
 #include "shapes/ExampleShape.h"
 #include "shapes/CubeShape.h"
 #include "shapes/CylinderShape.h"
@@ -42,7 +46,7 @@ private:
 
     std::unique_ptr<CS123::GL::CS123Shader> m_toonShader;
 
-    std::unique_ptr<TerrainShape> m_terrain;
+    std::unique_ptr<TerrainBase> m_terrain;
 
     CS123SceneLightData m_sceneLight;
 

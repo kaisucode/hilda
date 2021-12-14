@@ -1,13 +1,22 @@
-#include "shapes/terrain/TerrainCliff.h"
+#include "shapes/TerrainShape.h"
 
-TerrainCliff::TerrainCliff()
+TerrainShape::TerrainShape() :
+	m_numRows(m_length * m_length_modifier), 
+	m_numCols(m_length * m_length_modifier), 
+	m_isFilledIn(true)
 {
-	TerrainBase();
 }
 
-TerrainCliff::TerrainCliff(int param1, int param2)
+TerrainShape::TerrainShape(int param1, int param2) :
+	m_numRows(m_length * m_length_modifier), 
+	m_numCols(m_length * m_length_modifier), 
+	m_isFilledIn(true)
 {
-	TerrainBase(param1, param2);
+	m_param1 = std::max(1, param1); // number of layers of triangles
+	m_param2 = std::max(3, param2); // number of sides
+
+	int numVertices = (m_numRows - 1) * (2 * m_numCols + 2);
+	m_vertexData.reserve(2 * numVertices * 3);
 
 	for (int row = 0; row < m_numRows - 1; row++) {
 		for (int col = m_numCols - 1; col >= 0; col--) {
@@ -31,7 +40,7 @@ TerrainCliff::TerrainCliff(int param1, int param2)
  * Returns a pseudo-random value between -1.0 and 1.0 for the given row and
  * column.
  */
-float TerrainCliff::randValue(int row, int col)
+float TerrainShape::randValue(int row, int col)
 {
     return -1.0 + 2.0 * glm::fract(sin(row * 127.1f + col * 311.7f) * 43758.5453123f);
 }
@@ -81,7 +90,7 @@ glm::vec4 noised(glm::vec3 x)
 
 }
 
-float TerrainCliff::getNoise( glm::vec3 x )
+glm::vec4 fbmd( glm::vec3 x )
 {
 	const float scale  = 1.5f;
     // const float scale  = 3.0f;
@@ -100,7 +109,7 @@ float TerrainCliff::getNoise( glm::vec3 x )
         f *= 1.8f;             // frequency increase
     }
 
-	return a;
+	return glm::vec4(a, d);
 }
 
 
@@ -108,7 +117,7 @@ float TerrainCliff::getNoise( glm::vec3 x )
  * Returns the object-space position for the terrain vertex at the given row
  * and column.
  */
-glm::vec3 TerrainCliff::getPosition(int row, int col)
+glm::vec3 TerrainShape::getPosition(int row, int col)
 {
     glm::vec3 position;
     position.x = 10 * row/m_numRows - 5;
@@ -157,7 +166,7 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
 
 	// float noise = randValue(row, col) * 0.08 / (m_length_modifier * m_length_modifier);
 	// float noise = noised(position);
-	float noise = fabs(getNoise(position));
+	float noise = fabs(fbmd(position).x);
 	// float noise = (fbmd(position).x);
 
 	position.y = std::pow(noise * 1.1f, 3);
@@ -176,7 +185,39 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
 }
 
 
-TerrainCliff::~TerrainCliff()
+/**
+ * Returns the normal vector for the terrain vertex at the given row and
+ * column.
+ */
+glm::vec3 TerrainShape::getNormal(int row, int col)
+{
+    // TODO: Compute the normal at the given row and column using the positions
+    //       of the neighboring vertices.
+
+	int offsets[8][2]{ 
+		{-1, -1}, {0, -1}, {1, -1}, 
+		{1, 0}, {1, 1}, 
+		{0,1}, {-1, 1}, {-1, 0}
+	};
+
+	glm::vec3 sumVector = glm::vec3(0, 0, 0);
+	glm::vec3 p = getPosition(row, col);
+	glm::vec3 lastVector = getPosition(row - 1, col);
+	for (int i = 0; i < 8; i++) {
+		glm::vec3 curVector = getPosition(row + offsets[i][0], col + offsets[i][1]);
+		sumVector += glm::normalize(glm::cross(p - curVector, p - lastVector));
+		lastVector = curVector;
+	}
+
+	return sumVector / 8.0f;
+}
+
+bool TerrainShape::isFilledIn() {
+    return m_isFilledIn;
+}
+
+
+TerrainShape::~TerrainShape()
 {
 }
 

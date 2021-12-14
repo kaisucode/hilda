@@ -17,7 +17,8 @@
 using namespace CS123::GL;
 
 TerrainScene::TerrainScene() :
-    m_terrain(std::make_unique<TerrainShape>(settings.shapeParameter1, settings.shapeParameter2)),
+    m_terrain(std::make_unique<TerrainCliff>(settings.shapeParameter1, settings.shapeParameter2)),
+    // m_terrain(std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2)),
     m_sceneLight(),
     m_backgroundColor(0.8f, 0.93f, 0.96f)
 {
@@ -81,8 +82,6 @@ void TerrainScene::renderGeometry() {
     m_toonShader->setUniform("m", glm::mat4(1));
     m_terrain->draw();
     drawTrees();
-
-
 
     return;
 }

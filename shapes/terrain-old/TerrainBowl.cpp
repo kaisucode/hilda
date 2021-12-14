@@ -79,6 +79,9 @@ glm::vec3 TerrainBowl::getPosition(int row, int col)
 	float u = glm::fract(col / 20.0f);
 	float v = glm::fract(row / 20.0f);
 
+	// float bicubicU = pow(u, 2) * (3 - 2 * u);
+	// float bicubicV = pow(v, 2) * (3 - 2 * v);
+
 	float bicubicU = pow(u, 2) * (3 - 2 * u);
 	float bicubicV = pow(v, 2) * (3 - 2 * v);
 

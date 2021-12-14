@@ -1,7 +1,7 @@
 #ifndef TERRAINBASE_H
 #define TERRAINBASE_H
 
-#include "shapes/OpenGLShape.h"
+#include "../OpenGLShape.h"
 
 class TerrainBase : public OpenGLShape
 {
@@ -25,9 +25,6 @@ public:
 	virtual glm::vec3 getPosition(int row, int col) { return glm::vec3(0); };
 
 	glm::vec3 getNormal(int row, int col);
-
-    int getVertexDataSize();
-    glm::vec3 getVertexAtIndex(int index);
 };
 
 #endif // TERRAINSHAPE_H

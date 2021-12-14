@@ -158,7 +158,10 @@ void TerrainScene::settingsChanged() {
     setToonUniforms();
     setLight();
 
-	if (settings.terrainType && this->terrainType != settings.terrainType) {
+	if (settings.terrainType == NULL) {
+		settings.terrainType = this->terrainType;
+	}
+	else if (this->terrainType != settings.terrainType) {
 		// update terrain
 		
 		switch (settings.terrainType) {

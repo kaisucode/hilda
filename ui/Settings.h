@@ -151,7 +151,7 @@ struct Settings {
     int numberOfTrees;
     bool useOutlines;
     float outlineWeight;
-    int maxTreeNum = 100;
+    int maxTreeNum = 200;
 
     int getSceneMode();
     int getCameraMode();

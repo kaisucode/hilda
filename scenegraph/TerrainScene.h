@@ -50,17 +50,16 @@ private:
 
     std::unique_ptr<TerrainBase> m_terrain;
 
-    CS123SceneLightData m_sceneLight;
-
-    bool m_should_use_LOD = true;
-    int m_LOD_count_threshold = 3;
+    glm::vec4 m_sceneLight;
 
     glm::vec3 m_backgroundColor;
     int m_numTrees;
-    std::vector<int> m_randIndices;
+    std::vector<glm::vec3> m_randVertices;
     std::uniform_int_distribution<std::mt19937::result_type> m_distRand();
 
 	int terrainType;
+
+    float m_treeScale;
 };
 
 #endif // TERRAINSCENE_H

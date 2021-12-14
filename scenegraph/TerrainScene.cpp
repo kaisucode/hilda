@@ -21,17 +21,17 @@ using namespace CS123::GL;
  */
 TerrainScene::TerrainScene() :
     m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
-    terrainType(TERRAIN_LAB),
-    m_sceneLight(),
     m_backgroundColor(0.8f, 0.93f, 0.96f),
     m_numTrees(settings.numberOfTrees),
-    m_randIndices()
+    m_randVertices(),
+    terrainType(TERRAIN_LAB),
+    m_treeScale(0.25f)
 {
 
     settings.terrainType = this->terrainType;
 
     loadShaders();
-    m_randIndices.reserve(settings.maxTreeNum);
+    m_randVertices.reserve(settings.maxTreeNum);
     generatePseudoRandIndices();
     settingsChanged();
 }
@@ -69,8 +69,8 @@ void TerrainScene::setLight() {
     float sunPercent = (glm::clamp(settings.timeOfDay, 6.f, 18.f) - 6.f) / 12.f;
     float sunAngle = sunPercent * M_PI;
 
-    m_sceneLight.dir = glm::rotate(sunAngle, glm::vec3(0, 0, 1)) * glm::vec4(1, 0, 0.25, 0);
-    m_toonShader->setUniform("lightDir", m_sceneLight.dir);
+    m_sceneLight = glm::rotate(sunAngle, glm::vec3(0, 0, 1)) * glm::vec4(1, 0, 0.25, 0);
+    m_toonShader->setUniform("lightDir", m_sceneLight);
 
     m_backgroundColor =  glm::mix(glm::vec3(0.56, 0.79, 0.94), glm::vec3(0.94, 0.8, 0.55), std::abs(1.f - 2 * sunPercent));
     m_toonShader->setUniform("backgroundColor", m_backgroundColor);
@@ -112,38 +112,40 @@ void TerrainScene::drawTerrain() {
 }
 
 void TerrainScene::drawTrees() {
-    float scaleFactor = 0.25f;
-    glm::vec3 baseTree = {0, -scaleFactor * 0.5f, 0};
     std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
 
     m_toonShader->setUniform("terrain", false);
     m_toonShader->setUniform("objectColor", glm::vec3(0.090, 0.368, 0.098));
-    float treeOutline = 2.f * scaleFactor * settings.outlineWeight;
+    float treeOutline = 2.f * m_treeScale * settings.outlineWeight;
     m_toonShader->setUniform("outlineWeight", treeOutline);
-    glm::mat4 scaleMatrix = glm::scale(glm::vec3(scaleFactor));
+    glm::mat4 scaleMatrix = glm::scale(glm::vec3(m_treeScale));
 
     for (int i = 0; i < m_numTrees; i++) {
-        int vertexIndex = m_randIndices[i];
-        glm::vec3 location = m_terrain->getVertexAtIndex(vertexIndex);
-        glm::vec3 translation = location - baseTree;
-        glm::mat4x4 modelMatrix = glm::translate(translation) * scaleMatrix;
+        glm::mat4x4 modelMatrix = glm::translate(m_randVertices[i]) * scaleMatrix;
         m_toonShader->setUniform("m", modelMatrix);
         tree->draw();
     }
-
 }
 
 void TerrainScene::generatePseudoRandIndices() {
-    m_randIndices.clear();
+    m_randVertices.clear();
     int numVertices = m_terrain->getVertexDataSize();
-    int maxIndex = numVertices / 6;
-//index: 179998 //make 100 trees the max or something
-    for (int i=1; i<settings.maxTreeNum+1; i++) {
-         int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
-         if(index < numVertices) {
-             m_randIndices.push_back(index);
-         }
-     }
+
+    glm::vec3 baseTree = {0, -m_treeScale * 0.5f, 0};
+
+    int i = 0;
+    int numTrees = 0;
+    while (numTrees < settings.maxTreeNum) {
+        i++;
+        int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
+        glm::vec3 location = m_terrain->getVertexAtIndex(index);
+        glm::vec3 translation = location - baseTree;
+
+        if (translation.y > -0.2 && translation.y < 0.3) {
+            m_randVertices.push_back(translation);
+            numTrees++;
+        }
+    }
 }
 
 void TerrainScene::settingsChanged() {

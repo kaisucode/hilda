@@ -251,7 +251,7 @@ void MainWindow::dataBind() {
     BIND(IntBinding::bindSliderAndTextbox(
              ui->numTreesSlider, ui->numTreesTextbox, settings.numberOfTrees, 0, settings.maxTreeNum))
     BIND(BoolBinding::bindCheckbox(ui->useOutlines, settings.useOutlines))
-    BIND(FloatBinding::bindSliderAndTextbox(ui->outlineWeightSlider, ui->outlineWeightTextbox, settings.outlineWeight, 0, 0.5))
+    BIND(FloatBinding::bindSliderAndTextbox(ui->outlineWeightSlider, ui->outlineWeightTextbox, settings.outlineWeight, 0, 0.4))
 
 #undef BIND
 

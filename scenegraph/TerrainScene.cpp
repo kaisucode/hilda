@@ -17,7 +17,8 @@
 using namespace CS123::GL;
 
 TerrainScene::TerrainScene() :
-    m_terrain(std::make_unique<TerrainCliff>(settings.shapeParameter1, settings.shapeParameter2)),
+    m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
+    // m_terrain(std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2)),
     // m_terrain(std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2)),
     m_sceneLight(),
     m_backgroundColor(0.8f, 0.93f, 0.96f)
@@ -60,10 +61,14 @@ void TerrainScene::setLight() {
 }
 
 void TerrainScene::setMatrixUniforms(SupportCanvas3D *context) {
-    CamtransCamera *camera = context->getCamtransCamera();
-    m_toonShader->setUniform("WS_camPosition", camera->getPosition());
-    m_toonShader->setUniform("p", camera->getProjectionMatrix());
-    m_toonShader->setUniform("v", camera->getViewMatrix());
+	CamtransCamera *camera = context->getCamtransCamera();
+	m_toonShader->setUniform("WS_camPosition", camera->getPosition());
+    // m_toonShader->setUniform("p", camera->getProjectionMatrix());
+    // m_toonShader->setUniform("v", camera->getViewMatrix());
+
+    m_toonShader->setUniform("p", context->getCamera()->getProjectionMatrix());
+    m_toonShader->setUniform("v", context->getCamera()->getViewMatrix());
+	m_toonShader->setUniform("m", glm::mat4(1.0f));
 }
 
 void TerrainScene::setToonUniforms() {

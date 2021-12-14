@@ -173,15 +173,6 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
 		position.y += randValue(row, col) * 0.001;
 	}
 
-	// position.y = pow(position.y, 2) + position.y * 2 + noise;
-
-	
-	// position.y /= m_length_modifier;
-	// position.y = pow(position.y, 2) + position.y * 2 + randValue(row, col) * 0.08;
-	// position.y = position.y * newYColCeiling + randValue(newYRowCeiling, newYColCeiling);
-    // position.y = pow(position.y, 2) + position.y * 2 + randValue(row, col) * 0.08 + 0.3 * randValue(newYRowCeiling, newYColCeiling);
-	// position.y = randValue(newRow, newCol);
-
     return position;
 }
 

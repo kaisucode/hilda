@@ -6,6 +6,7 @@
 #include "shapes/terrain/TerrainBase.h"
 #include "shapes/terrain/TerrainBowl.h"
 #include "shapes/terrain/TerrainCliff.h"
+#include "shapes/terrain/TerrainLab.h"
 
 #include "shapes/ExampleShape.h"
 #include "shapes/CubeShape.h"

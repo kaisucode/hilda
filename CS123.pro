@@ -51,6 +51,7 @@ SOURCES += \
 		shapes/terrain/TerrainBase.cpp \
 		shapes/terrain/TerrainBowl.cpp \
 		shapes/terrain/TerrainCliff.cpp \
+		shapes/terrain/TerrainLab.cpp \
     shapes/ExampleShape.cpp \
     shapes/OpenGLShape.cpp \
     shapes/TreeShape.cpp \
@@ -120,6 +121,7 @@ HEADERS += \
 		shapes/terrain/TerrainBase.h \
 		shapes/terrain/TerrainBowl.h \
 		shapes/terrain/TerrainCliff.h \
+		shapes/terrain/TerrainLab.h \
     shapes/ExampleShape.h \
     shapes/OpenGLShape.h \
     shapes/TreeShape.h \

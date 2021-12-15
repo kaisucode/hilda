@@ -120,6 +120,8 @@ void SupportCanvas3D::paintGL() {
 }
 
 void SupportCanvas3D::settingsChanged() {
+    std::cout << glm::to_string(getCamtransCamera()->getPosition()) << std::endl;
+    std::cout << glm::to_string(getCamtransCamera()->getLook()) << std::endl;
     m_settingsDirty = true;
     if (m_currentScene != nullptr) {
         // Just calling this function so that the scene is always updated.
@@ -130,7 +132,7 @@ void SupportCanvas3D::settingsChanged() {
             m_terrainType = settings.terrainType;
             switch (m_terrainType) {
                 case TERRAIN_LAB:
-                    getCamtransCamera()->orientLook(glm::vec4(-2, 1.5, -2, 1), glm::vec4(1, -0.5, 1, 0), glm::vec4(0, 1, 0, 0));
+                    getCamtransCamera()->orientLook(glm::vec4(2, 2, 2, 1), glm::vec4(-1, -1, -1, 0), glm::vec4(0, 1, 0, 0));
                     break;
                 case TERRAIN_LAKE:
                     getCamtransCamera()->orientLook(glm::vec4(-2, 2.5, -2, 1), glm::vec4(1, -0.5, 1, 0), glm::vec4(0, 1, 0, 0));

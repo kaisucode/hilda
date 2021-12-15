@@ -55,7 +55,6 @@ SOURCES += \
 		shapes/terrain/TerrainLab.cpp \
     shapes/ExampleShape.cpp \
     shapes/OpenGLShape.cpp \
-    shapes/TreeShape.cpp \
     shapes/TriangleShape.cpp \
     shapes/Vertex.cpp \
     ui/Canvas2D.cpp \
@@ -126,7 +125,6 @@ HEADERS += \
 		shapes/terrain/TerrainLab.h \
     shapes/ExampleShape.h \
     shapes/OpenGLShape.h \
-    shapes/TreeShape.h \
     shapes/TriangleShape.h \
     shapes/Vertex.h \
     ui/Canvas2D.h \

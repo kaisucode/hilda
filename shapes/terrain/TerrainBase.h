@@ -30,4 +30,4 @@ public:
     glm::vec3 getVertexAtIndex(int index);
 };
 
-#endif // TERRAINSHAPE_H
+#endif // TERRAINBASE_H

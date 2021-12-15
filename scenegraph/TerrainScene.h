@@ -2,7 +2,6 @@
 #define TERRAINSCENE_H
 
 #include "OpenGLScene.h"
-// #include "shapes/TerrainShape.h"
 
 #include "shapes/terrain/TerrainBase.h"
 #include "shapes/terrain/TerrainBowl.h"

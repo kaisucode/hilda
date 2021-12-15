@@ -115,6 +115,7 @@ private:
     std::unique_ptr<ShapesScene> m_shapesScene;
     std::unique_ptr<SceneviewScene> m_sceneviewScene;
     std::unique_ptr<TerrainScene> m_terrainScene;
+    int m_terrainType;
 };
 
 #endif // SUPPORTCANVAS3D_H

@@ -76,6 +76,7 @@ void Settings::loadSettingsOrDefaults() {
     useOutlines = true;
     numberOfTrees = 10;
     outlineWeight = 0.2;
+    terrainType = TerrainType::TERRAIN_LAB;
 
 
     currentTab = s.value("currentTab", TAB_2D).toBool();

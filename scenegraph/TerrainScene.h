@@ -8,6 +8,7 @@
 #include "shapes/terrain/TerrainBowl.h"
 #include "shapes/terrain/TerrainCliff.h"
 #include "shapes/terrain/TerrainLab.h"
+#include "shapes/terrain/BasicTree.h"
 
 #include "shapes/ExampleShape.h"
 #include "shapes/CubeShape.h"
@@ -49,6 +50,7 @@ private:
     std::unique_ptr<CS123::GL::CS123Shader> m_toonShader;
 
     std::unique_ptr<TerrainBase> m_terrain;
+    std::unique_ptr<BasicTree> m_tree;
 
     glm::vec4 m_sceneLight;
 
@@ -57,7 +59,7 @@ private:
     std::vector<glm::vec3> m_randVertices;
     std::uniform_int_distribution<std::mt19937::result_type> m_distRand();
 
-	int terrainType;
+    int m_terrainType;
 
     float m_treeScale;
 };

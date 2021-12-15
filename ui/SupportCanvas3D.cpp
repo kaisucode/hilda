@@ -21,7 +21,8 @@ SupportCanvas3D::SupportCanvas3D(QGLFormat format, QWidget *parent) : QGLWidget(
     m_settingsDirty(true),
     m_defaultPerspectiveCamera(new CamtransCamera()),
     m_defaultOrbitingCamera(new OrbitingCamera()),
-    m_currentScene(nullptr)
+    m_currentScene(nullptr),
+    m_terrainType(settings.terrainType)
 {
 }
 
@@ -124,7 +125,26 @@ void SupportCanvas3D::settingsChanged() {
         // Just calling this function so that the scene is always updated.
         setSceneFromSettings();
         m_currentScene->settingsChanged();
+
+        if (m_terrainType != settings.terrainType) {
+            m_terrainType = settings.terrainType;
+            switch (m_terrainType) {
+                case TERRAIN_LAB:
+                    getCamtransCamera()->orientLook(glm::vec4(-2, 1.5, -2, 1), glm::vec4(1, -0.5, 1, 0), glm::vec4(0, 1, 0, 0));
+                    break;
+                case TERRAIN_LAKE:
+                    getCamtransCamera()->orientLook(glm::vec4(-2, 2.5, -2, 1), glm::vec4(1, -0.5, 1, 0), glm::vec4(0, 1, 0, 0));
+                    break;
+                case TERRAIN_CLIFF:
+                    getCamtransCamera()->orientLook(glm::vec4(2, 0.75, 4, 1), glm::vec4(-1, 0.25, -1.8, 0), glm::vec4(0, 1, 0, 0));
+                    break;
+                default:
+                    getCamtransCamera()->orientLook(glm::vec4(-2, 2.5, -2, 1), glm::vec4(1, -0.5, 1, 0), glm::vec4(0, 1, 0, 0));
+                    break;
+            }
+        }
     }
+    setFocus();
     update(); /* repaint the scene */
 }
 

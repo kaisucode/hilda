@@ -11,7 +11,6 @@
 #include "SupportCanvas3D.h"
 #include "ResourceLoader.h"
 #include "gl/shaders/CS123Shader.h"
-#include "shapes/TreeShape.cpp"
 #include <glm/gtx/transform.hpp>
 
 using namespace CS123::GL;
@@ -21,15 +20,13 @@ using namespace CS123::GL;
  */
 TerrainScene::TerrainScene() :
     m_terrain(std::make_unique<TerrainLab>(settings.shapeParameter1, settings.shapeParameter2)),
+    m_tree(std::make_unique<BasicTree>()),
     m_backgroundColor(0.8f, 0.93f, 0.96f),
     m_numTrees(settings.numberOfTrees),
     m_randVertices(),
-    terrainType(TERRAIN_LAB),
+    m_terrainType(settings.terrainType),
     m_treeScale(0.25f)
 {
-
-    settings.terrainType = this->terrainType;
-
     loadShaders();
     m_randVertices.reserve(settings.maxTreeNum);
     generatePseudoRandIndices();
@@ -112,25 +109,18 @@ void TerrainScene::drawTerrain() {
 }
 
 void TerrainScene::drawTrees() {
-    std::unique_ptr<TreeShape> tree = std::make_unique<TreeShape>();
-
-    m_toonShader->setUniform("terrain", false);
-    m_toonShader->setUniform("objectColor", glm::vec3(0.090, 0.368, 0.098));
-    float treeOutline = 2.f * m_treeScale * settings.outlineWeight;
-    m_toonShader->setUniform("outlineWeight", treeOutline);
-    glm::mat4 scaleMatrix = glm::scale(glm::vec3(m_treeScale));
+    std::unique_ptr<BasicTree> tree = std::make_unique<BasicTree>();
 
     for (int i = 0; i < m_numTrees; i++) {
-        glm::mat4x4 modelMatrix = glm::translate(m_randVertices[i]) * scaleMatrix;
-        m_toonShader->setUniform("m", modelMatrix);
-        tree->draw();
+        glm::mat4x4 modelMatrix = glm::translate(m_randVertices[i]);
+        tree->draw(m_toonShader, modelMatrix);
     }
 }
 
 void TerrainScene::generatePseudoRandIndices() {
     m_randVertices.clear();
     int numVertices = m_terrain->getVertexDataSize();
-    std::cout<<"numVertices"<<numVertices<<std::endl;
+//    std::cout<<"numVertices"<<numVertices<<std::endl;
 
     glm::vec3 baseTree = {0, -m_treeScale * 0.5f, 0};
 
@@ -138,15 +128,16 @@ void TerrainScene::generatePseudoRandIndices() {
     int numTrees = 0;
     while (numTrees < settings.maxTreeNum) {
         i++;
-//        int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
+        int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
 
-        int index = std::abs((6 * int((i/100.0f) * (numVertices / 6)) + (1234 + std::abs(numVertices-i) * i))%numVertices)%numVertices;
-        std::cout<<"i"<<i<<std::endl;
-        std::cout<<index<<std::endl;
+//        int index = std::abs((6 * int((i/100.0f) * (numVertices / 6)) + (1234 + std::abs(numVertices-i) * i))%numVertices)%numVertices;
+//        std::cout<<"i"<<i<<std::endl;
+//        std::cout<<index<<std::endl;
         glm::vec3 location = m_terrain->getVertexAtIndex(index);
         glm::vec3 translation = location - baseTree;
 
-        if (translation.y > -0.2 && translation.y < 0.3) {
+        if (location.y > -0.2 && location.y < 0.3) {
+            std::cout << location.y << "," << translation.y << std::endl;
             m_randVertices.push_back(translation);
             numTrees++;
         }
@@ -156,7 +147,7 @@ void TerrainScene::generatePseudoRandIndices() {
 void TerrainScene::settingsChanged() {
     setToonUniforms();
     setLight();
-    if (this->terrainType != settings.terrainType) {
+    if (this->m_terrainType != settings.terrainType) {
 		// update terrain
 		switch (settings.terrainType) {
 			case TERRAIN_LAB:
@@ -172,7 +163,7 @@ void TerrainScene::settingsChanged() {
 				m_terrain = std::make_unique<TerrainBowl>(settings.shapeParameter1, settings.shapeParameter2);
         }
 
-        this->terrainType = settings.terrainType;
+        this->m_terrainType = settings.terrainType;
         generatePseudoRandIndices();
 	}
     if (this->m_numTrees != settings.numberOfTrees) {

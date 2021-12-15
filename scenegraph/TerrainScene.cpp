@@ -85,8 +85,8 @@ void TerrainScene::setLight() {
 void TerrainScene::setCameraUniforms(SupportCanvas3D *context) {
 	CamtransCamera *camera = context->getCamtransCamera();
 	m_toonShader->setUniform("WS_camPosition", camera->getPosition());
-    m_toonShader->setUniform("p", context->getCamera()->getProjectionMatrix());
-    m_toonShader->setUniform("v", context->getCamera()->getViewMatrix());
+    m_toonShader->setUniform("p", camera->getProjectionMatrix());
+    m_toonShader->setUniform("v", camera->getViewMatrix());
 }
 
 

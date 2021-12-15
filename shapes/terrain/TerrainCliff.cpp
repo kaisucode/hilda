@@ -37,7 +37,7 @@ float TerrainCliff::randValue(int row, int col)
 }
 
 
-float TerrainCliff::hash(glm::vec3 p)  // replace this by something better
+float TerrainCliff::hash(glm::vec3 p)
 {
     p  = 50.0f * glm::fract(p * 0.3183099f + glm::vec3(0.71,0.113,0.419));
 	return -1.0 + 2.0 * glm::fract(p.x * p.y * p.z * (p.x + p.y + p.z));
@@ -54,7 +54,6 @@ float TerrainCliff::noised(glm::vec3 x)
     // quintic interpolation
 	glm::vec3 u = w * w * w * (w * (w * 6.0f - 15.0f) + 10.0f);
 	// glm::vec3 u = w * w * (3.0f - 2.0f * w);
-	glm::vec3 du = 30.0f*w*w*(w*(w-2.0f)+1.0f);
     
     float a = hash(i + glm::vec3(0.0,0.0,0.0));
     float b = hash(i + glm::vec3(temp,0.0,0.0));

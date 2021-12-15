@@ -2495,7 +2495,7 @@
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="title">
-      <string>Terrain Type</string>
+      <string>Terrain type</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="topMargin">
@@ -2543,7 +2543,7 @@
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>190</y>
+       <y>210</y>
        <width>60</width>
        <height>24</height>
       </rect>
@@ -2572,7 +2572,7 @@
       <rect>
        <x>10</x>
        <y>190</y>
-       <width>41</width>
+       <width>101</width>
        <height>24</height>
       </rect>
      </property>
@@ -2580,16 +2580,16 @@
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="text">
-      <string>Trees</string>
+      <string>Tree rate</string>
      </property>
     </widget>
     <widget class="QSlider" name="numTreesSlider">
      <property name="geometry">
       <rect>
-       <x>45</x>
-       <y>195</y>
-       <width>121</width>
-       <height>16</height>
+       <x>10</x>
+       <y>210</y>
+       <width>151</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -2609,7 +2609,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>230</y>
+       <y>260</y>
        <width>101</width>
        <height>22</height>
       </rect>
@@ -2625,7 +2625,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>260</y>
+       <y>290</y>
        <width>111</width>
        <height>24</height>
       </rect>
@@ -2641,7 +2641,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>280</y>
+       <y>310</y>
        <width>151</width>
        <height>20</height>
       </rect>
@@ -2663,7 +2663,7 @@
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>280</y>
+       <y>310</y>
        <width>60</width>
        <height>24</height>
       </rect>

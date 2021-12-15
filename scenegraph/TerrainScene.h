@@ -52,9 +52,16 @@ private:
     std::unique_ptr<TerrainBase> m_terrain;
     std::unique_ptr<BasicTree> m_tree;
 
-    glm::vec4 m_sceneLight;
+    glm::vec4 m_lightDir;
 
+    glm::vec3 m_skyColorOne;
+    glm::vec3 m_skyColorTwo;
     glm::vec3 m_backgroundColor;
+
+    glm::vec4 m_shadowTint;
+    glm::vec4 m_highlightTint;
+    glm::vec3 m_outlineColor;
+
     int m_numTrees;
     std::vector<glm::vec3> m_randVertices;
     std::uniform_int_distribution<std::mt19937::result_type> m_distRand();

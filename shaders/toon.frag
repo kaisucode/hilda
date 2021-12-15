@@ -18,8 +18,10 @@ uniform float outlineWeight;
 void main() {
     float vertToEyeDist = length(WS_position - WS_camPosition.xyz);
 
-    float maxOutlineWeight = outlineWeight + 0.025;
-    float minOutlineWeight = outlineWeight - 0.025;
+    float distanceAdjust = outlineWeight * min(1, vertToEyeDist);
+
+    float maxOutlineWeight = distanceAdjust + 0.025;
+    float minOutlineWeight = distanceAdjust - 0.025;
 
     vec3 WS_toLight = normalize(lightDir.xyz);
     float luminosity = 0.1 + 0.9 * max(0.0, dot(normalize(WS_normal), WS_toLight));

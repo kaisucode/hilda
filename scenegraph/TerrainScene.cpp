@@ -130,6 +130,7 @@ void TerrainScene::drawTrees() {
 void TerrainScene::generatePseudoRandIndices() {
     m_randVertices.clear();
     int numVertices = m_terrain->getVertexDataSize();
+    std::cout<<"numVertices"<<numVertices<<std::endl;
 
     glm::vec3 baseTree = {0, -m_treeScale * 0.5f, 0};
 
@@ -137,7 +138,11 @@ void TerrainScene::generatePseudoRandIndices() {
     int numTrees = 0;
     while (numTrees < settings.maxTreeNum) {
         i++;
-        int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
+//        int index = (6 * ((((17999 % i)*16932) + 3731)))%numVertices;
+
+        int index = std::abs((6 * int((i/100.0f) * (numVertices / 6)) + (1234 + std::abs(numVertices-i) * i))%numVertices)%numVertices;
+        std::cout<<"i"<<i<<std::endl;
+        std::cout<<index<<std::endl;
         glm::vec3 location = m_terrain->getVertexAtIndex(index);
         glm::vec3 translation = location - baseTree;
 

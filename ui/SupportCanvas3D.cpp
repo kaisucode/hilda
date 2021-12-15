@@ -120,8 +120,6 @@ void SupportCanvas3D::paintGL() {
 }
 
 void SupportCanvas3D::settingsChanged() {
-    std::cout << glm::to_string(getCamtransCamera()->getPosition()) << std::endl;
-    std::cout << glm::to_string(getCamtransCamera()->getLook()) << std::endl;
     m_settingsDirty = true;
     if (m_currentScene != nullptr) {
         // Just calling this function so that the scene is always updated.

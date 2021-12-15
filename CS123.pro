@@ -47,7 +47,6 @@ SOURCES += \
     shapes/CylinderShape.cpp \
     shapes/ConeShape.cpp \
     shapes/SphereShape.cpp \
-		shapes/TerrainShape.cpp \
     shapes/terrain/BasicTree.cpp \
 		shapes/terrain/TerrainBase.cpp \
 		shapes/terrain/TerrainBowl.cpp \
@@ -117,7 +116,6 @@ HEADERS += \
     shapes/CylinderShape.h \
     shapes/ConeShape.h \
     shapes/SphereShape.h \
-		shapes/TerrainShape.h \
     shapes/terrain/BasicTree.h \
 		shapes/terrain/TerrainBase.h \
 		shapes/terrain/TerrainBowl.h \

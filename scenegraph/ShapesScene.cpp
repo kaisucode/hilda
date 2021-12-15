@@ -11,7 +11,6 @@
 #include "shapes/CylinderShape.h"
 #include "shapes/ConeShape.h"
 #include "shapes/SphereShape.h"
-#include "shapes/TerrainShape.h"
 
 using namespace CS123::GL;
 #include "gl/shaders/CS123Shader.h"
@@ -218,9 +217,9 @@ void ShapesScene::settingsChanged() {
 			case SHAPE_CYLINDER: 
 				m_shape = std::make_unique<CylinderShape>(settings.shapeParameter1, settings.shapeParameter2);
 				break;
-            case SHAPE_SPECIAL_1:
-                m_shape = std::make_unique<TerrainShape>(settings.shapeParameter1, settings.shapeParameter2);
-                break;
+            // case SHAPE_SPECIAL_1:
+            //     m_shape = std::make_unique<TerrainShape>(settings.shapeParameter1, settings.shapeParameter2);
+            //     break;
                 // case SHAPE_TORUS:
                 //     break;
 			default: 

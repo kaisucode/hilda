@@ -1,15 +1,15 @@
-#ifndef TERRAINCLIFF_H
-#define TERRAINCLIFF_H
+#ifndef TERRAINPERLIN_H
+#define TERRAINPERLIN_H
 
 #include "TerrainBase.h"
 
 
-class TerrainCliff : public TerrainBase
+class TerrainPerlin : public TerrainBase
 {
 public:
-    TerrainCliff();
-    TerrainCliff(int param1, int param2);
-    ~TerrainCliff();
+    TerrainPerlin();
+    TerrainPerlin(int param1, int param2);
+    ~TerrainPerlin();
 
 	const float m_centerRadius = 2;
 
@@ -22,4 +22,4 @@ private:
 	float noised(glm::vec3 x);
 };
 
-#endif // TERRAINCLIFF_H
+#endif // TERRAINPERLIN_H

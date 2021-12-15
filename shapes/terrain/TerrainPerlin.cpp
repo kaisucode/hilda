@@ -1,11 +1,11 @@
-#include "shapes/terrain/TerrainCliff.h"
+#include "shapes/terrain/TerrainPerlin.h"
 
-TerrainCliff::TerrainCliff()
+TerrainPerlin::TerrainPerlin()
 {
 	TerrainBase();
 }
 
-TerrainCliff::TerrainCliff(int param1, int param2)
+TerrainPerlin::TerrainPerlin(int param1, int param2)
 {
 	TerrainBase(param1, param2);
 
@@ -31,19 +31,19 @@ TerrainCliff::TerrainCliff(int param1, int param2)
  * Returns a pseudo-random value between -1.0 and 1.0 for the given row and
  * column.
  */
-float TerrainCliff::randValue(int row, int col)
+float TerrainPerlin::randValue(int row, int col)
 {
     return -1.0 + 2.0 * glm::fract(sin(row * 127.1f + col * 311.7f) * 43758.5453123f);
 }
 
 
-float TerrainCliff::hash(glm::vec3 p)
+float TerrainPerlin::hash(glm::vec3 p)
 {
     p  = 50.0f * glm::fract(p * 0.3183099f + glm::vec3(0.71,0.113,0.419));
 	return -1.0 + 2.0 * glm::fract(p.x * p.y * p.z * (p.x + p.y + p.z));
 }
 
-// glm::vec3 TerrainCliff::hash3D(glm::vec3 p)
+// glm::vec3 TerrainPerlin::hash3D(glm::vec3 p)
 glm::vec3 hash3D(glm::vec3 p)
 {
 	p = glm::vec3( glm::dot(p,glm::vec3(127.1,311.7, 74.7)),
@@ -54,7 +54,7 @@ glm::vec3 hash3D(glm::vec3 p)
 }
 
 
-float TerrainCliff::noised(glm::vec3 x)
+float TerrainPerlin::noised(glm::vec3 x)
 {
 	float temp = 1.1f;
 
@@ -114,7 +114,7 @@ float TerrainCliff::noised(glm::vec3 x)
 
 }
 
-float TerrainCliff::getNoise( glm::vec3 x )
+float TerrainPerlin::getNoise( glm::vec3 x )
 {
 
 	return noised(x);
@@ -139,7 +139,7 @@ float TerrainCliff::getNoise( glm::vec3 x )
  * Returns the object-space position for the terrain vertex at the given row
  * and column.
  */
-glm::vec3 TerrainCliff::getPosition(int row, int col)
+glm::vec3 TerrainPerlin::getPosition(int row, int col)
 {
     glm::vec3 position;
     position.x = 10 * row/m_numRows - 5;
@@ -165,7 +165,7 @@ glm::vec3 TerrainCliff::getPosition(int row, int col)
 }
 
 
-TerrainCliff::~TerrainCliff()
+TerrainPerlin::~TerrainPerlin()
 {
 }
 

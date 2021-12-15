@@ -1,25 +1,24 @@
-# Graphics Final Project
+# Cartoon World
 
-### Introduction to Computer Graphics, Fall 2021
+### Introduction to Computer Graphics, Fall 2021, Final Project
 
+### Created by Kevin Hsu (khsu13), Mandy He (mhe26), Mehek Jethani (mjethani)
 
-## Logins
-- mjethani
-- mhe26
-- khsu13
+![Cartoon World Logo](readme_assets/logo.png)
 
 ## Description / Theme
-- A stylized scenary (eg. fantasy) that contains a generated fractal terrain. The user would be able to move around the scene with arrow or WASD keys, and high-dynamic-range rendering would be applied to the objects in the scene. 
-- (disclaimer: no collision detection would be applied to the character)
+- A stylized cartoon scenary that contains a generated terrain. The user can move around the scene with arrow and WASD keys.
 
 ## Technical features
 - Stylized rendering
-- HDR, perhaps with bloom
-- (Fractal?) terrain
+- Terrain generation
+- Different biomes based on altitude
+- Random tree generation
 - Basic camera movement
 
-### Potential features
-- Move the camera or objects in the scene along a path defined as a piecewise Bezier curve, for example to render a ride on a roller coaster
-- Fractals
-- Computer generated art
+## Usage
+- Toggle the time of the day using the `Time` slider (affects shading and color)
+- Select terrain type (lab, lake, cliff) from the radio buttons
+- Select tree spawn rate by using the `Trees` slider
+- Toggle outline with the checkbox, and `Outline weight` with the slider
 

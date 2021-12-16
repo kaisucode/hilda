@@ -1,8 +1,8 @@
 # Cartoon World
  
 ### Introduction to Computer Graphics, Fall 2021, Final Project
- 
 ### Created by Kevin Hsu (khsu13), Mandy He (mhe26), Mehek Jethani (mjethani)
+#### [Link to demo](https://youtu.be/9O_QzsNyzRM)
  
 ![Cartoon World Logo](readme_assets/logo.png)
  
